@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduConnect - Notes</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/yourkit.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h2>EduConnect</h2>
+    <ul>
+      <li><a href="dashboard.html">Home</a></li>
+      <li><a href="doubts.html">Doubts</a></li>
+      <li><a href="notes.html" class="active">Notes</a></li>
+      <li><a href="assignments.html">Assignments</a></li>
+      <li><a href="index.html" class="logout">Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="notes-container">
+
+    <h1>Study Notes 📄</h1>
+    <p class="subtitle">Access and share study materials</p>
+
+    <!-- Add Notes Section -->
+    <div class="add-notes">
+      <h3>Add Notes</h3>
+
+      <input type="text" id="noteTitle" placeholder="Enter subject / title">
+      <input type="text" id="noteLink" placeholder="Paste notes link (Google Drive / PDF)">
+
+      <button onclick="addNote()" class="btn">Add Note</button>
+    </div>
+
+    <!-- Notes Display Section -->
+    <div class="notes-list" id="notesList">
+      <!-- Notes will appear here -->
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
