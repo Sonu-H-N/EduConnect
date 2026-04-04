@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduConnect - Doubts</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h2>EduConnect</h2>
+    <ul>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="doubts.html" class="active">Doubts</a></li>
+      <li><a href="notes.html">Notes</a></li>
+      <li><a href="assignments.html">Assignments</a></li>
+      <li><button id="themeToggle">🌙</button></li>
+      <li><a href="#" onclick="logout()">Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="doubts-container">
+
+    <h1>Doubt Discussion 💬</h1>
+    <p class="subtitle">Ask questions and get answers</p>
+
+    <!-- Add Doubt -->
+    <div class="add-doubt">
+      <h3>Post a Doubt</h3>
+
+      <input type="text" id="doubtInput" placeholder="Enter your question...">
+      <button onclick="addDoubt()" class="btn">Post</button>
+    </div>
+
+    <!-- Doubts List -->
+    <div class="doubt-list" id="doubtList">
+      <!-- Doubts will appear here -->
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
