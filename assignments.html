@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduConnect - Assignments</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h2>EduConnect</h2>
+    <ul>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="doubts.html">Doubts</a></li>
+      <li><a href="notes.html">Notes</a></li>
+      <li><a href="assignments.html" class="active">Assignments</a></li>
+      <li><button id="themeToggle">🌙</button></li>
+      <li><a href="#" onclick="logout()">Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="notes-container">
+
+    <h1>Assignments 📌</h1>
+    <p class="subtitle">Manage and view academic tasks</p>
+
+    <!-- Add Assignment -->
+    <div class="add-notes">
+      <h3>Add Assignment</h3>
+
+      <input type="text" id="assignmentTitle" placeholder="Enter assignment title">
+      <input type="text" id="assignmentDesc" placeholder="Enter description / link">
+
+      <button onclick="addAssignment()" class="btn">Add Assignment</button>
+    </div>
+
+    <!-- Assignment List -->
+    <div class="notes-list" id="assignmentList">
+      <!-- Assignments will appear here -->
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
