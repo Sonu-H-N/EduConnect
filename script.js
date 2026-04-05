@@ -147,3 +147,65 @@ function deleteDoubt(index) {
 
   loadDoubts();
 }
+// LOAD ASSIGNMENTS
+document.addEventListener("DOMContentLoaded", loadAssignments);
+
+// ADD ASSIGNMENT
+function addAssignment() {
+  const title = document.getElementById("assignmentTitle").value;
+  const desc = document.getElementById("assignmentDesc").value;
+
+  if (title === "" || desc === "") {
+    alert("Please fill all fields!");
+    return;
+  }
+
+  let assignments = JSON.parse(localStorage.getItem("assignments")) || [];
+
+  assignments.push({
+    title: title,
+    desc: desc
+  });
+
+  localStorage.setItem("assignments", JSON.stringify(assignments));
+
+  document.getElementById("assignmentTitle").value = "";
+  document.getElementById("assignmentDesc").value = "";
+
+  loadAssignments();
+}
+
+// LOAD ASSIGNMENTS
+function loadAssignments() {
+  const list = document.getElementById("assignmentList");
+
+  if (!list) return;
+
+  let assignments = JSON.parse(localStorage.getItem("assignments")) || [];
+
+  list.innerHTML = "";
+
+  assignments.forEach((item, index) => {
+    const div = document.createElement("div");
+    div.classList.add("note-card");
+
+    div.innerHTML = `
+      <h3>${item.title}</h3>
+      <p>${item.desc}</p>
+      <button onclick="deleteAssignment(${index})">Delete</button>
+    `;
+
+    list.appendChild(div);
+  });
+}
+
+// DELETE ASSIGNMENT
+function deleteAssignment(index) {
+  let assignments = JSON.parse(localStorage.getItem("assignments")) || [];
+
+  assignments.splice(index, 1);
+
+  localStorage.setItem("assignments", JSON.stringify(assignments));
+
+  loadAssignments();
+}
