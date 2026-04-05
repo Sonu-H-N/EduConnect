@@ -61,3 +61,89 @@ function deleteNote(index) {
 
   loadNotes();
 }
+// LOAD DOUBTS
+document.addEventListener("DOMContentLoaded", loadDoubts);
+
+// ADD DOUBT
+function addDoubt() {
+  const input = document.getElementById("doubtInput").value;
+
+  if (input === "") {
+    alert("Please enter a doubt!");
+    return;
+  }
+
+  let doubts = JSON.parse(localStorage.getItem("doubts")) || [];
+
+  doubts.push({
+    question: input,
+    replies: []
+  });
+
+  localStorage.setItem("doubts", JSON.stringify(doubts));
+
+  document.getElementById("doubtInput").value = "";
+
+  loadDoubts();
+}
+
+// LOAD DOUBTS FUNCTION
+function loadDoubts() {
+  const doubtList = document.getElementById("doubtList");
+
+  if (!doubtList) return;
+
+  let doubts = JSON.parse(localStorage.getItem("doubts")) || [];
+
+  doubtList.innerHTML = "";
+
+  doubts.forEach((doubt, index) => {
+    const div = document.createElement("div");
+    div.classList.add("doubt-card");
+
+    let repliesHTML = "";
+    doubt.replies.forEach(reply => {
+      repliesHTML += `<p class="reply">💬 ${reply}</p>`;
+    });
+
+    div.innerHTML = `
+      <h3>${doubt.question}</h3>
+
+      <div class="replies">
+        ${repliesHTML}
+      </div>
+
+      <input type="text" placeholder="Write a reply..." id="reply-${index}">
+      <button onclick="addReply(${index})">Reply</button>
+      <button onclick="deleteDoubt(${index})">Delete</button>
+    `;
+
+    doubtList.appendChild(div);
+  });
+}
+
+// ADD REPLY
+function addReply(index) {
+  const replyInput = document.getElementById(`reply-${index}`).value;
+
+  if (replyInput === "") return;
+
+  let doubts = JSON.parse(localStorage.getItem("doubts")) || [];
+
+  doubts[index].replies.push(replyInput);
+
+  localStorage.setItem("doubts", JSON.stringify(doubts));
+
+  loadDoubts();
+}
+
+// DELETE DOUBT
+function deleteDoubt(index) {
+  let doubts = JSON.parse(localStorage.getItem("doubts")) || [];
+
+  doubts.splice(index, 1);
+
+  localStorage.setItem("doubts", JSON.stringify(doubts));
+
+  loadDoubts();
+}
