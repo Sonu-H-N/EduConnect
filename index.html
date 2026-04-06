@@ -3,56 +3,86 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EduConnect - Login</title>
+  <title>EduConnect</title>
 
   <link rel="stylesheet" href="style.css">
 
   <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-  <div class="container">
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h2>EduConnect</h2>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><button id="themeToggle">🌙</button></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Connect. Learn. Grow.</h1>
+      <p>EduConnect bridges the gap between students and teachers with a modern interactive platform.</p>
+      <a href="#login" class="btn">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <h2>Why EduConnect?</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>💬 Doubt Solving</h3>
+        <p>Ask questions and get instant replies</p>
+      </div>
+
+      <div class="card">
+        <h3>📄 Notes Sharing</h3>
+        <p>Access study materials anytime</p>
+      </div>
+
+      <div class="card">
+        <h3>📌 Assignments</h3>
+        <p>Stay updated with academic tasks</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Login Section -->
+  <section class="login-section" id="login">
     <div class="login-box">
 
-      <h1>EduConnect</h1>
-      <p class="tagline">Learn. Interact. Grow.</p>
+      <h2>Login to EduConnect</h2>
 
       <form id="loginForm">
 
-        <!-- Role Selection -->
         <div class="role-select">
-          <label>
-            <input type="radio" name="role" value="student" required>
-            Student
-          </label>
-
-          <label>
-            <input type="radio" name="role" value="teacher" required>
-            Teacher
-          </label>
+          <label><input type="radio" name="role" value="student" required> Student</label>
+          <label><input type="radio" name="role" value="teacher" required> Teacher</label>
         </div>
 
-        <!-- Username -->
-        <div class="input-box">
-          <input type="text" id="username" placeholder="Enter Username" required>
-        </div>
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
 
-        <!-- Password -->
-        <div class="input-box">
-          <input type="password" id="password" placeholder="Enter Password" required>
-        </div>
-
-        <!-- Login Button -->
         <button type="submit" class="btn">Login</button>
 
       </form>
 
-      <p class="footer-text">© 2026 EduConnect</p>
-
     </div>
-  </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 EduConnect | Learn. Interact. Grow.</p>
+  </footer>
 
   <script src="script.js"></script>
 

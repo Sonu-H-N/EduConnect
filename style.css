@@ -228,3 +228,46 @@ body {
   border-radius: 5px;
   font-size: 14px;
 }
+/* HERO */
+.hero {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+}
+
+.hero h1 {
+  font-size: 40px;
+}
+
+.hero p {
+  margin: 15px 0;
+}
+
+/* FEATURES */
+.features {
+  padding: 40px;
+  text-align: center;
+  background: #fff;
+}
+
+.features h2 {
+  margin-bottom: 20px;
+}
+
+/* LOGIN SECTION */
+.login-section {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #1e3c72;
+  color: #fff;
+}
