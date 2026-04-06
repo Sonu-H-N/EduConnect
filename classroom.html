@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EduConnect - Classroom</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <h2>EduConnect</h2>
+  <ul>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="classroom.html" class="active">Classroom</a></li>
+    <li><button id="themeToggle">🌙</button></li>
+    <li><a href="#" onclick="logout()">Logout</a></li>
+  </ul>
+</nav>
+
+<div class="notes-container">
+
+  <h1>Virtual Classroom 🎓</h1>
+
+  <!-- Teacher Section -->
+  <div id="teacherSection">
+    <h3>Create Classroom</h3>
+    <button onclick="createClass()" class="btn">Create Class</button>
+    <p id="classCodeDisplay"></p>
+  </div>
+
+  <!-- Student Section -->
+  <div id="studentSection">
+    <h3>Join Classroom</h3>
+    <input type="text" id="classCodeInput" placeholder="Enter Class Code">
+    <button onclick="joinClass()" class="btn">Join</button>
+  </div>
+
+  <!-- Members -->
+  <div id="classMembers">
+    <h3>Class Members</h3>
+    <ul id="memberList"></ul>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

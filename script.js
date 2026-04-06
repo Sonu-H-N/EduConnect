@@ -233,3 +233,53 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+// CREATE CLASS (Teacher)
+function createClass() {
+  const code = Math.random().toString(36).substring(2, 7).toUpperCase();
+
+  localStorage.setItem("classCode", code);
+  localStorage.setItem("members", JSON.stringify([]));
+
+  document.getElementById("classCodeDisplay").innerText = "Class Code: " + code;
+}
+
+// JOIN CLASS (Student)
+function joinClass() {
+  const inputCode = document.getElementById("classCodeInput").value;
+  const savedCode = localStorage.getItem("classCode");
+
+  if (inputCode !== savedCode) {
+    alert("Invalid Class Code!");
+    return;
+  }
+
+  const user = localStorage.getItem("user") || "Student";
+
+  let members = JSON.parse(localStorage.getItem("members")) || [];
+
+  members.push(user);
+
+  localStorage.setItem("members", JSON.stringify(members));
+
+  loadMembers();
+}
+
+// LOAD MEMBERS
+function loadMembers() {
+  const list = document.getElementById("memberList");
+
+  if (!list) return;
+
+  let members = JSON.parse(localStorage.getItem("members")) || [];
+
+  list.innerHTML = "";
+
+  members.forEach(m => {
+    const li = document.createElement("li");
+    li.innerText = m;
+    list.appendChild(li);
+  });
+}
+
+// AUTO LOAD
+document.addEventListener("DOMContentLoaded", loadMembers);
