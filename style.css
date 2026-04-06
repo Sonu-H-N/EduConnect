@@ -271,3 +271,55 @@ footer {
   background: #1e3c72;
   color: #fff;
 }
+/* THEME BUTTON */
+.theme-btn {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: #fff;
+  color: #333;
+  font-size: 16px;
+}
+
+/* LIGHT MODE DEFAULT */
+body {
+  transition: 0.3s ease;
+}
+
+/* DARK MODE */
+.dark-mode {
+  background: #121212 !important;
+  color: #ffffff !important;
+}
+
+/* NAVBAR DARK */
+.dark-mode .navbar {
+  background: #1f1f1f;
+}
+
+/* CARDS DARK */
+.dark-mode .card,
+.dark-mode .login-box,
+.dark-mode .note-card,
+.dark-mode .doubt-card {
+  background: #1e1e1e;
+  color: #fff;
+}
+
+/* INPUT DARK */
+.dark-mode input {
+  background: #333;
+  color: #fff;
+  border: none;
+}
+
+/* LINKS */
+.dark-mode a {
+  color: #90caf9;
+}
+
+/* FOOTER */
+.dark-mode footer {
+  background: #1f1f1f;
+}
