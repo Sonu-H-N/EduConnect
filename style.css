@@ -390,3 +390,6 @@ video {
   justify-content: center;
   gap: 10px;
 }
+html {
+  scroll-behavior: smooth;
+}

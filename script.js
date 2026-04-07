@@ -405,3 +405,24 @@ function endCall() {
   localStorage.removeItem("offer");
   localStorage.removeItem("answer");
 }
+const loginForm = document.getElementById("loginForm");
+
+if (loginForm) {
+  loginForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const role = document.querySelector('input[name="role"]:checked');
+    const username = document.getElementById("username").value;
+
+    if (!role) {
+      alert("Select role!");
+      return;
+    }
+
+    localStorage.setItem("user", username);
+    localStorage.setItem("role", role.value);
+
+    // 🔥 REDIRECT FIX
+    window.location.href = "dashboard.html";
+  });
+}
