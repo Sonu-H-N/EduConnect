@@ -323,3 +323,43 @@ body {
 .dark-mode footer {
   background: #1f1f1f;
 }
+/* CHAT BOX */
+.chat-box {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+  color: #333;
+}
+
+/* MESSAGES */
+.chat-messages {
+  height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+/* MESSAGE */
+.chat-message {
+  margin-bottom: 8px;
+}
+
+/* TIME */
+.time {
+  font-size: 10px;
+  color: gray;
+  margin-left: 5px;
+}
+
+/* INPUT */
+.chat-input {
+  display: flex;
+  gap: 10px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 8px;
+}

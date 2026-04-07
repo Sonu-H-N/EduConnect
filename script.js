@@ -283,3 +283,57 @@ function loadMembers() {
 
 // AUTO LOAD
 document.addEventListener("DOMContentLoaded", loadMembers);
+// SEND MESSAGE
+function sendMessage() {
+  const input = document.getElementById("chatInput");
+  const message = input.value;
+
+  if (message === "") return;
+
+  const user = localStorage.getItem("user") || "User";
+
+  let chats = JSON.parse(localStorage.getItem("chats")) || [];
+
+  chats.push({
+    user: user,
+    message: message,
+    time: new Date().toLocaleTimeString()
+  });
+
+  localStorage.setItem("chats", JSON.stringify(chats));
+
+  input.value = "";
+
+  loadMessages();
+}
+
+// LOAD MESSAGES
+function loadMessages() {
+  const chatBox = document.getElementById("chatMessages");
+
+  if (!chatBox) return;
+
+  let chats = JSON.parse(localStorage.getItem("chats")) || [];
+
+  chatBox.innerHTML = "";
+
+  chats.forEach(chat => {
+    const div = document.createElement("div");
+    div.classList.add("chat-message");
+
+    div.innerHTML = `
+      <strong>${chat.user}</strong>: ${chat.message} 
+      <span class="time">${chat.time}</span>
+    `;
+
+    chatBox.appendChild(div);
+  });
+
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+// AUTO REFRESH (simulate live chat)
+setInterval(loadMessages, 1000);
+
+// LOAD ON PAGE OPEN
+document.addEventListener("DOMContentLoaded", loadMessages);
