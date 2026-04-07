@@ -52,6 +52,21 @@
   </div>
 </div>
 </div>
+<!-- VIDEO CALL -->
+<div class="video-box">
+  <h3>Live Video Class 🎥</h3>
+
+  <div class="video-container">
+    <video id="localVideo" autoplay muted></video>
+    <video id="remoteVideo" autoplay></video>
+  </div>
+
+  <div class="video-controls">
+    <button onclick="startCall()" class="btn">Start</button>
+    <button onclick="callUser()" class="btn">Call</button>
+    <button onclick="endCall()" class="btn">End</button>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>

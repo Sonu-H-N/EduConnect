@@ -337,3 +337,71 @@ setInterval(loadMessages, 1000);
 
 // LOAD ON PAGE OPEN
 document.addEventListener("DOMContentLoaded", loadMessages);
+let localStream;
+let peerConnection;
+
+const servers = {
+  iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
+};
+
+// START CAMERA
+async function startCall() {
+  localStream = await navigator.mediaDevices.getUserMedia({
+    video: true,
+    audio: true
+  });
+
+  document.getElementById("localVideo").srcObject = localStream;
+
+  peerConnection = new RTCPeerConnection(servers);
+
+  localStream.getTracks().forEach(track => {
+    peerConnection.addTrack(track, localStream);
+  });
+
+  peerConnection.ontrack = event => {
+    document.getElementById("remoteVideo").srcObject = event.streams[0];
+  };
+}
+
+// CREATE OFFER
+async function callUser() {
+  const offer = await peerConnection.createOffer();
+  await peerConnection.setLocalDescription(offer);
+
+  localStorage.setItem("offer", JSON.stringify(offer));
+  alert("Offer created! Open another tab to join.");
+}
+
+// ANSWER CALL (AUTO CHECK)
+setInterval(async () => {
+  if (!peerConnection) return;
+
+  const offer = JSON.parse(localStorage.getItem("offer"));
+
+  if (offer && !peerConnection.currentRemoteDescription) {
+    await peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
+
+    const answer = await peerConnection.createAnswer();
+    await peerConnection.setLocalDescription(answer);
+
+    localStorage.setItem("answer", JSON.stringify(answer));
+  }
+
+  const answer = JSON.parse(localStorage.getItem("answer"));
+
+  if (answer && !peerConnection.currentRemoteDescription) {
+    await peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
+  }
+}, 2000);
+
+// END CALL
+function endCall() {
+  if (peerConnection) peerConnection.close();
+
+  document.getElementById("localVideo").srcObject = null;
+  document.getElementById("remoteVideo").srcObject = null;
+
+  localStorage.removeItem("offer");
+  localStorage.removeItem("answer");
+}
