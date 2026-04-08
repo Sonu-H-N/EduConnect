@@ -2,70 +2,63 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EduConnect - Dashboard</title>
-
   <link rel="stylesheet" href="style.css">
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar">
+<div class="app-container">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
     <h2>EduConnect</h2>
-    <ul>
-      <li><a href="dashboard.html" class="active">Dashboard</a></li>
-      <li><a href="doubts.html">Doubts</a></li>
-      <li><a href="notes.html">Notes</a></li>
-      <li><a href="assignments.html">Assignments</a></li>
-      <li><button id="themeToggle">🌙</button></li>
-      <li><a href="#" onclick="logout()">Logout</a></li>
-    </ul>
-  </nav>
+    <a href="dashboard.html">🏠 Dashboard</a>
+    <a href="doubts.html">💬 Doubts</a>
+    <a href="notes.html">📄 Notes</a>
+    <a href="assignments.html">📌 Assignments</a>
+    <a href="classroom.html">🎓 Classroom</a>
+    <button id="themeToggle">🌙</button>
+    <a href="#" onclick="logout()">🚪 Logout</a>
+  </div>
 
   <!-- Main Content -->
-  <div class="dashboard-container">
+  <div class="main-content">
 
-    <h1 id="welcomeText">Welcome to EduConnect 🎓</h1>
-    <p class="subtitle">Your smart academic interaction platform</p>
+    <h1>Welcome 👋</h1>
+    <p class="subtitle">Your smart academic dashboard</p>
 
-    <!-- Feature Cards -->
     <div class="cards">
 
-      <!-- Doubts -->
       <div class="card">
         <h3>💬 Doubts</h3>
-        <p>Ask questions and interact with teachers</p>
+        <p>Ask & answer questions</p>
         <a href="doubts.html" class="btn">Open</a>
       </div>
 
-      <!-- Notes -->
       <div class="card">
         <h3>📄 Notes</h3>
-        <p>Access and share study materials</p>
+        <p>Study materials</p>
         <a href="notes.html" class="btn">Open</a>
       </div>
 
-      <!-- Assignments -->
       <div class="card">
         <h3>📌 Assignments</h3>
-        <p>View and manage academic tasks</p>
+        <p>Track tasks</p>
         <a href="assignments.html" class="btn">Open</a>
+      </div>
+
+      <div class="card">
+        <h3>🎓 Classroom</h3>
+        <p>Live classes & chat</p>
+        <a href="classroom.html" class="btn">Open</a>
       </div>
 
     </div>
 
   </div>
 
-  <script src="script.js"></script>
+</div>
 
+<script src="script.js"></script>
 </body>
 </html>
-<div class="card">
-  <h3>🎓 Classroom</h3>
-  <p>Create or join virtual classes</p>
-  <a href="classroom.html" class="btn">Open</a>
-</div>
