@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Settings</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>EduConnect</h2>
+    <a href="dashboard.html">🏠 Dashboard</a>
+    <a href="doubts.html">💬 Doubts</a>
+    <a href="notes.html">📄 Notes</a>
+    <a href="assignments.html">📌 Assignments</a>
+    <a href="classroom.html">🎓 Classroom</a>
+    <a href="settings.html">⚙️ Settings</a>
+    <button id="themeToggle">🌙 Theme</button>
+    <a href="#" onclick="logout()">🚪 Logout</a>
+  </div>
+
+  <!-- Main -->
+  <div class="main-content">
+    <h1>⚙️ Settings</h1>
+
+    <div class="settings-box">
+
+      <h3>Update Profile</h3>
+      <input type="text" id="newName" placeholder="New username">
+      <select id="newRole">
+        <option value="student">Student</option>
+        <option value="teacher">Teacher</option>
+      </select>
+      <button onclick="saveSettings()" class="btn">Save</button>
+
+      <hr>
+
+      <h3>Danger Zone 🚨</h3>
+      <button onclick="clearData()" class="btn danger">Clear All Data</button>
+
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

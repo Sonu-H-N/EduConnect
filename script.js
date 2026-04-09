@@ -452,3 +452,24 @@ function updateProfile() {
 
   document.getElementById("editName").value = "";
 }
+// SAVE SETTINGS
+function saveSettings() {
+  const name = document.getElementById("newName").value;
+  const role = document.getElementById("newRole").value;
+
+  if (name !== "") {
+    localStorage.setItem("user", name);
+  }
+
+  localStorage.setItem("role", role);
+
+  alert("Settings saved!");
+}
+
+// CLEAR ALL DATA
+function clearData() {
+  if (confirm("Are you sure? This will delete all data!")) {
+    localStorage.clear();
+    window.location.href = "index.html";
+  }
+}

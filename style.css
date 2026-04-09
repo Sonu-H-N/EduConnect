@@ -245,3 +245,27 @@ html {
   flex: 1;
   padding: 20px;
 }
+/* SETTINGS */
+.settings-box {
+  background: rgba(255,255,255,0.15);
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 400px;
+}
+
+.settings-box input,
+.settings-box select {
+  width: 100%;
+  margin: 10px 0;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+}
+
+.danger {
+  background: #e74c3c;
+}
+
+.danger:hover {
+  background: #c0392b;
+}
