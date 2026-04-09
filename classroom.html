@@ -7,15 +7,42 @@
 </head>
 <body>
 
-<nav class="navbar">
-  <h2>EduConnect</h2>
-  <ul>
-    <li><a href="dashboard.html">Dashboard</a></li>
-    <li><a href="classroom.html" class="active">Classroom</a></li>
-    <li><button id="themeToggle">🌙</button></li>
-    <li><a href="#" onclick="logout()">Logout</a></li>
-  </ul>
-</nav>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Assignments</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+
+  <div class="sidebar">
+    <h2>EduConnect</h2>
+    <a href="dashboard.html">🏠 Dashboard</a>
+    <a href="doubts.html">💬 Doubts</a>
+    <a href="notes.html">📄 Notes</a>
+    <a href="assignments.html">📌 Assignments</a>
+    <a href="classroom.html">🎓 Classroom</a>
+    <button id="themeToggle">🌙 Theme</button>
+    <a href="#" onclick="logout()">🚪 Logout</a>
+  </div>
+
+  <div class="main-content">
+    <h1>Assignments 📌</h1>
+
+    <input type="text" id="assignmentTitle" placeholder="Title">
+    <input type="text" id="assignmentDesc" placeholder="Description">
+    <button onclick="addAssignment()" class="btn">Add</button>
+
+    <div id="assignmentList"></div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
 
 <div class="notes-container">
 

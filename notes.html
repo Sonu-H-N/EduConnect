@@ -13,18 +13,42 @@
 
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar">
+  <<!DOCTYPE html>
+<html>
+<head>
+  <title>Notes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+
+  <div class="sidebar">
     <h2>EduConnect</h2>
-    <ul>
-      <li><a href="dashboard.html">Dashboard</a></li>
-      <li><a href="doubts.html">Doubts</a></li>
-      <li><a href="notes.html" class="active">Notes</a></li>
-      <li><a href="assignments.html">Assignments</a></li>
-      <li><button id="themeToggle">🌙</button></li>
-      <li><a href="#" onclick="logout()">Logout</a></li>
-    </ul>
-  </nav>
+    <a href="dashboard.html">🏠 Dashboard</a>
+    <a href="doubts.html">💬 Doubts</a>
+    <a href="notes.html">📄 Notes</a>
+    <a href="assignments.html">📌 Assignments</a>
+    <a href="classroom.html">🎓 Classroom</a>
+    <button id="themeToggle">🌙 Theme</button>
+    <a href="#" onclick="logout()">🚪 Logout</a>
+  </div>
+
+  <div class="main-content">
+    <h1>Notes 📄</h1>
+
+    <input type="text" id="noteTitle" placeholder="Title">
+    <input type="text" id="noteLink" placeholder="Link">
+    <button onclick="addNote()" class="btn">Add</button>
+
+    <div id="notesList"></div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
 
   <!-- Main Container -->
   <div class="notes-container">
