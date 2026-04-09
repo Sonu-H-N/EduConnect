@@ -426,3 +426,29 @@ if (loginForm) {
     window.location.href = "dashboard.html";
   });
 }
+// LOAD PROFILE
+document.addEventListener("DOMContentLoaded", loadProfile);
+
+function loadProfile() {
+  const name = localStorage.getItem("user");
+  const role = localStorage.getItem("role");
+
+  const nameEl = document.getElementById("profileName");
+  const roleEl = document.getElementById("profileRole");
+
+  if (nameEl) nameEl.textContent = name || "Guest";
+  if (roleEl) roleEl.textContent = role || "Student";
+}
+
+// UPDATE PROFILE
+function updateProfile() {
+  const newName = document.getElementById("editName").value;
+
+  if (newName === "") return;
+
+  localStorage.setItem("user", newName);
+
+  loadProfile();
+
+  document.getElementById("editName").value = "";
+}
