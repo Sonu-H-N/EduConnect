@@ -306,3 +306,52 @@ html {
     transform: rotate(360deg);
   }
 }
+/* CENTER LAYOUT */
+.center-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+  height: 100vh;
+}
+
+/* HERO TEXT */
+.hero-text {
+  max-width: 400px;
+}
+
+.hero-text h1 {
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.hero-text p {
+  margin-top: 10px;
+  opacity: 0.8;
+}
+
+/* LOGIN BOX */
+.login-box {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(15px);
+  padding: 30px;
+  border-radius: 20px;
+  width: 320px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* INPUTS */
+.login-box input {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+}
+
+/* BUTTON */
+.btn {
+  width: 100%;
+  margin-top: 10px;
+}

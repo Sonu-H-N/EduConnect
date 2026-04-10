@@ -19,28 +19,38 @@
 
   <div class="app-container">
 
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <h2>EduConnect</h2>
+  <body>
 
-    <a href="dashboard.html">🏠 Dashboard</a>
-    <a href="doubts.html">💬 Doubts</a>
-    <a href="notes.html">📄 Notes</a>
-    <a href="assignments.html">📌 Assignments</a>
-    <a href="classroom.html">🎓 Classroom</a>
+<!-- Sidebar stays -->
 
-    <button id="themeToggle">🌙 Theme</button>
-    <a href="#" onclick="logout()">🚪 Logout</a>
+<div class="main-content center-layout">
+
+  <!-- LEFT TEXT -->
+  <div class="hero-text">
+    <h1>Connect.<br>Learn.<br>Grow.</h1>
+    <p>EduConnect bridges students and teachers with a smart platform.</p>
   </div>
-<a href="settings.html">⚙️ Settings</a>
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <div class="hero-text">
-      <h1>Connect. Learn. Grow.</h1>
-      <p>EduConnect bridges the gap between students and teachers with a modern interactive platform.</p>
-      <a href="#login" class="btn">Get Started</a>
-    </div>
-  </section>
+
+  <!-- LOGIN CARD -->
+  <div class="login-box">
+    <h2>Login</h2>
+
+    <form id="loginForm">
+      <div class="role-select">
+        <label><input type="radio" name="role" value="student" required> Student</label>
+        <label><input type="radio" name="role" value="teacher" required> Teacher</label>
+      </div>
+
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="password" id="password" placeholder="Password" required>
+
+      <button type="submit" class="btn">Login</button>
+    </form>
+  </div>
+
+</div>
+
+</body>
 
   <!-- Features Section -->
   <section class="features" id="features">
