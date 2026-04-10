@@ -473,3 +473,14 @@ function clearData() {
     window.location.href = "index.html";
   }
 }
+// AUTO ACTIVE MENU
+document.addEventListener("DOMContentLoaded", () => {
+  const links = document.querySelectorAll(".sidebar a");
+  const currentPage = window.location.pathname.split("/").pop();
+
+  links.forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active");
+    }
+  });
+});
