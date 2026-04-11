@@ -23,13 +23,30 @@
 
 <!-- Sidebar stays -->
 
-<div class="main-content center-layout">
+<<div class="main-content center-layout">
 
-  <!-- LEFT TEXT -->
   <div class="hero-text">
     <h1>Connect.<br>Learn.<br>Grow.</h1>
     <p>EduConnect bridges students and teachers with a smart platform.</p>
   </div>
+
+  <div class="login-box">
+    <h2>Login</h2>
+
+    <form id="loginForm">
+      <div class="role-select">
+        <label><input type="radio" name="role" value="student" required> Student</label>
+        <label><input type="radio" name="role" value="teacher" required> Teacher</label>
+      </div>
+
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="password" id="password" placeholder="Password" required>
+
+      <button type="submit" class="btn">Login</button>
+    </form>
+  </div>
+
+</div>
 
   <!-- LOGIN CARD -->
   <div class="login-box">

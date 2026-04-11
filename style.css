@@ -306,13 +306,50 @@ html {
     transform: rotate(360deg);
   }
 }
-/* CENTER LAYOUT */
+/* CENTER EVERYTHING PERFECTLY */
 .center-layout {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 80px;
   height: 100vh;
+  gap: 100px;
+  padding: 20px;
+}
+
+/* HERO TEXT */
+.hero-text {
+  max-width: 400px;
+}
+
+.hero-text h1 {
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* LOGIN BOX */
+.login-box {
+  width: 340px;
+  padding: 35px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* INPUT FIX */
+.login-box input {
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+}
+
+/* BUTTON FULL WIDTH */
+.btn {
+  width: 100%;
+  margin-top: 10px;
 }
 
 /* HERO TEXT */
@@ -354,4 +391,7 @@ html {
 .btn {
   width: 100%;
   margin-top: 10px;
+}
+body {
+  overflow: hidden;
 }
