@@ -10,148 +10,80 @@
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
+
+<body>
+
 <!-- LOADER -->
 <div id="loader">
   <div class="spinner"></div>
   <p>Loading EduConnect...</p>
 </div>
-<body>
 
-  <div class="app-container">
+<!-- MAIN CONTENT -->
+<div class="main-content center-layout">
 
-  <body>
-
-<!-- Sidebar stays -->
-
-<<div class="main-content center-layout">
-
+  <!-- LEFT TEXT -->
   <div class="hero-text">
     <h1>Connect.<br>Learn.<br>Grow.</h1>
     <p>EduConnect bridges students and teachers with a smart platform.</p>
   </div>
 
+  <!-- SINGLE LOGIN BOX -->
   <div class="login-box">
-    <h2>Login</h2>
+    <h2>Login to EduConnect</h2>
 
     <form id="loginForm">
+
       <div class="role-select">
-        <label><input type="radio" name="role" value="student" required> Student</label>
-        <label><input type="radio" name="role" value="teacher" required> Teacher</label>
+        <label>
+          <input type="radio" name="role" value="student" required>
+          Student
+        </label>
+
+        <label>
+          <input type="radio" name="role" value="teacher" required>
+          Teacher
+        </label>
       </div>
 
       <input type="text" id="username" placeholder="Username" required>
       <input type="password" id="password" placeholder="Password" required>
 
       <button type="submit" class="btn">Login</button>
+
     </form>
   </div>
 
 </div>
 
-  <!-- LOGIN CARD -->
-  <div class="login-box">
-    <h2>Login</h2>
+<!-- FEATURES -->
+<section class="features" id="features">
+  <h2>Why EduConnect?</h2>
 
-    <form id="loginForm">
-      <div class="role-select">
-        <label><input type="radio" name="role" value="student" required> Student</label>
-        <label><input type="radio" name="role" value="teacher" required> Teacher</label>
-      </div>
+  <div class="cards">
+    <div class="card">
+      <h3>💬 Doubt Solving</h3>
+      <p>Ask questions and get instant replies</p>
+    </div>
 
-      <input type="text" id="username" placeholder="Username" required>
-      <input type="password" id="password" placeholder="Password" required>
+    <div class="card">
+      <h3>📄 Notes Sharing</h3>
+      <p>Access study materials anytime</p>
+    </div>
 
-      <button type="submit" class="btn">Login</button>
-    </form>
+    <div class="card">
+      <h3>📌 Assignments</h3>
+      <p>Stay updated with academic tasks</p>
+    </div>
   </div>
-  <div class="login-box">
-  <h2>Login to EduConnect</h2>
+</section>
 
-  <form id="loginForm">
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 EduConnect | Learn. Interact. Grow.</p>
+</footer>
 
-    <div class="role-select">
-      <label>
-        <input type="radio" name="role" value="student" required>
-        Student
-      </label>
-
-      <label>
-        <input type="radio" name="role" value="teacher" required>
-        Teacher
-      </label>
-    </div>
-
-    <input type="text" id="username" placeholder="Username" required>
-    <input type="password" id="password" placeholder="Password" required>
-
-    <button type="submit" class="btn">Login</button>
-
-  </form>
-</div>
-
-</div>
-
-</body>
-
-  <!-- Features Section -->
-  <section class="features" id="features">
-    <h2>Why EduConnect?</h2>
-
-    <div class="cards">
-
-      <div class="card">
-        <h3>💬 Doubt Solving</h3>
-        <p>Ask questions and get instant replies</p>
-      </div>
-
-      <div class="card">
-        <h3>📄 Notes Sharing</h3>
-        <p>Access study materials anytime</p>
-      </div>
-
-      <div class="card">
-        <h3>📌 Assignments</h3>
-        <p>Stay updated with academic tasks</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Login Section -->
-  <section class="login-section" id="login">
-    <div class="login-box">
-
-      <h2>Login to EduConnect</h2>
-
-      <form id="loginForm">
-
-        <div class="role-select">
-          <label><input type="radio" name="role" value="student" required> Student</label>
-          <label><input type="radio" name="role" value="teacher" required> Teacher</label>
-        </div>
-
-        <input type="text" id="username" placeholder="Username" required>
-        <input type="password" id="password" placeholder="Password" required>
-
-        <button type="submit" class="btn">Login</button>
-
-      </form>
-
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2026 EduConnect | Learn. Interact. Grow.</p>
-  </footer>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
-<a href="dashboard.html">🏠 Dashboard</a>
-<a href="doubts.html">💬 Doubts</a>
-<a href="notes.html" class="active">📄 Notes</a>
-<a href="assignments.html">📌 Assignments</a>
-<a href="classroom.html">🎓 Classroom</a>
-<a href="settings.html">⚙️ Settings</a>
