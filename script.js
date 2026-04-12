@@ -498,3 +498,45 @@ window.addEventListener("load", () => {
 
   }, 800); // delay for effect
 });
+// MARK ATTENDANCE (Teacher)
+function markAttendance() {
+  let members = JSON.parse(localStorage.getItem("members")) || [];
+
+  if (members.length === 0) {
+    alert("No students in class!");
+    return;
+  }
+
+  let attendance = members.map(name => ({
+    name: name,
+    present: true,
+    time: new Date().toLocaleString()
+  }));
+
+  localStorage.setItem("attendance", JSON.stringify(attendance));
+
+  loadAttendance();
+}
+
+// LOAD ATTENDANCE
+function loadAttendance() {
+  const list = document.getElementById("attendanceList");
+
+  if (!list) return;
+
+  let attendance = JSON.parse(localStorage.getItem("attendance")) || [];
+
+  list.innerHTML = "";
+
+  attendance.forEach(student => {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      ✅ ${student.name} - Present <br>
+      <small>${student.time}</small>
+    `;
+    list.appendChild(li);
+  });
+}
+
+// AUTO LOAD
+document.addEventListener("DOMContentLoaded", loadAttendance);

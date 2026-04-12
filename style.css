@@ -442,3 +442,14 @@ body {
   box-shadow: 0 0 15px #ffd700;
   transform: scale(1.05);
 }
+/* ATTENDANCE */
+.attendance-box {
+  background: rgba(255,255,255,0.15);
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.attendance-box ul {
+  margin-top: 10px;
+}
