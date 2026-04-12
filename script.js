@@ -498,8 +498,8 @@ window.addEventListener("load", () => {
 
   }, 800); // delay for effect
 });
-// MARK ATTENDANCE (Teacher)
-function markAttendance() {
+// GENERATE ATTENDANCE LIST
+function generateAttendance() {
   let members = JSON.parse(localStorage.getItem("members")) || [];
 
   if (members.length === 0) {
@@ -509,7 +509,7 @@ function markAttendance() {
 
   let attendance = members.map(name => ({
     name: name,
-    present: true,
+    status: "Present",
     time: new Date().toLocaleString()
   }));
 
@@ -520,22 +520,51 @@ function markAttendance() {
 
 // LOAD ATTENDANCE
 function loadAttendance() {
-  const list = document.getElementById("attendanceList");
-
-  if (!list) return;
+  const container = document.getElementById("attendanceList");
+  if (!container) return;
 
   let attendance = JSON.parse(localStorage.getItem("attendance")) || [];
 
-  list.innerHTML = "";
+  container.innerHTML = "";
 
-  attendance.forEach(student => {
-    const li = document.createElement("li");
-    li.innerHTML = `
-      ✅ ${student.name} - Present <br>
+  attendance.forEach((student, index) => {
+    const div = document.createElement("div");
+    div.classList.add("attendance-item");
+
+    div.innerHTML = `
+      <strong>${student.name}</strong><br>
+
+      <button onclick="markPresent(${index})">✅</button>
+      <button onclick="markAbsent(${index})">❌</button>
+
+      <p>Status: ${student.status}</p>
       <small>${student.time}</small>
     `;
-    list.appendChild(li);
+
+    container.appendChild(div);
   });
+}
+
+// MARK PRESENT
+function markPresent(index) {
+  let attendance = JSON.parse(localStorage.getItem("attendance")) || [];
+
+  attendance[index].status = "Present";
+  attendance[index].time = new Date().toLocaleString();
+
+  localStorage.setItem("attendance", JSON.stringify(attendance));
+  loadAttendance();
+}
+
+// MARK ABSENT
+function markAbsent(index) {
+  let attendance = JSON.parse(localStorage.getItem("attendance")) || [];
+
+  attendance[index].status = "Absent";
+  attendance[index].time = new Date().toLocaleString();
+
+  localStorage.setItem("attendance", JSON.stringify(attendance));
+  loadAttendance();
 }
 
 // AUTO LOAD
