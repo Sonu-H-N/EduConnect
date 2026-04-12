@@ -569,3 +569,32 @@ function markAbsent(index) {
 
 // AUTO LOAD
 document.addEventListener("DOMContentLoaded", loadAttendance);
+// EXPORT PDF
+function exportPDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  let attendance = JSON.parse(localStorage.getItem("attendance")) || [];
+
+  if (attendance.length === 0) {
+    alert("No attendance data!");
+    return;
+  }
+
+  doc.setFontSize(16);
+  doc.text("EduConnect - Attendance Report", 20, 20);
+
+  let y = 30;
+
+  attendance.forEach((student, index) => {
+    doc.setFontSize(12);
+    doc.text(
+      `${index + 1}. ${student.name} - ${student.status} - ${student.time}`,
+      20,
+      y
+    );
+    y += 10;
+  });
+
+  doc.save("attendance.pdf");
+}
