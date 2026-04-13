@@ -534,9 +534,28 @@ function loadAttendance() {
     div.innerHTML = `
       <strong>${student.name}</strong><br>
 
-      <button onclick="markPresent(${index})">✅</button>
-      <button onclick="markAbsent(${index})">❌</button>
+      // MARK PRESENT
+function markPresent(index) {
+  let attendance = JSON.parse(localStorage.getItem("attendance")) || [];
 
+  attendance[index].status = "Present";
+  attendance[index].presentCount = (attendance[index].presentCount || 0) + 1;
+  attendance[index].totalClasses = (attendance[index].totalClasses || 0) + 1;
+
+  localStorage.setItem("attendance", JSON.stringify(attendance));
+  loadAttendance();
+}
+
+// MARK ABSENT
+function markAbsent(index) {
+  let attendance = JSON.parse(localStorage.getItem("attendance")) || [];
+
+  attendance[index].status = "Absent";
+  attendance[index].totalClasses = (attendance[index].totalClasses || 0) + 1;
+
+  localStorage.setItem("attendance", JSON.stringify(attendance));
+  loadAttendance();
+}
       <p>Status: ${student.status}</p>
       <small>${student.time}</small>
     `;
@@ -597,4 +616,36 @@ function exportPDF() {
   });
 
   doc.save("attendance.pdf");
+}function loadAttendance() {
+  const container = document.getElementById("attendanceList");
+  if (!container) return;
+
+  let attendance = JSON.parse(localStorage.getItem("attendance")) || [];
+
+  container.innerHTML = "";
+
+  attendance.forEach((student, index) => {
+    let percent = 0;
+
+    if (student.totalClasses) {
+      percent = Math.round(
+        (student.presentCount / student.totalClasses) * 100
+      );
+    }
+
+    const div = document.createElement("div");
+    div.classList.add("attendance-item");
+
+    div.innerHTML = `
+      <strong>${student.name}</strong><br>
+
+      <button onclick="markPresent(${index})">✅</button>
+      <button onclick="markAbsent(${index})">❌</button>
+
+      <p>Status: ${student.status}</p>
+      <p>Attendance: ${percent}% 📊</p>
+    `;
+
+    container.appendChild(div);
+  });
 }
