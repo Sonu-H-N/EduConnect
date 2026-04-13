@@ -450,3 +450,47 @@ body {
 .attendance-item p {
   margin: 5px 0;
 }
+/* BACKGROUND */
+body {
+  background: #f5f7fb;
+  color: #333;
+}
+
+/* TITLE */
+.title {
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: gray;
+  margin-bottom: 20px;
+}
+
+/* GRID */
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* CARD */
+.dash-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: 0.3s;
+}
+
+/* HOVER */
+.dash-card:hover {
+  transform: translateY(-5px);
+}
+
+/* LINKS */
+.dash-card a {
+  text-decoration: none;
+  color: #4a90e2;
+  font-weight: 500;
+}
