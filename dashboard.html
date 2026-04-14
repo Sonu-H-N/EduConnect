@@ -1,42 +1,69 @@
-<div class="main-content">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EduConnect Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-  <!-- TOP BAR -->
-  <div class="top-bar">
-    <h2>Dashboard</h2>
-    <p id="userGreeting"></p>
+<body>
+
+<div class="app-container">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h2>EduConnect</h2>
+
+    <a href="dashboard.html" class="active">🏠 Dashboard</a>
+    <a href="doubts.html">💬 Doubts</a>
+    <a href="notes.html">📄 Notes</a>
+    <a href="assignments.html">📌 Assignments</a>
+    <a href="classroom.html">🎓 Classroom</a>
+    <a href="settings.html">⚙️ Settings</a>
+
+    <button id="themeToggle">🌙</button>
+    <a href="#" onclick="logout()">🚪 Logout</a>
   </div>
 
-  <!-- STATS -->
-  <div class="stats">
-    <div class="stat-box">
-      <h3>💬 Doubts</h3>
-      <p>Ask & solve</p>
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+    <h1>Welcome 👋</h1>
+    <p class="subtitle">Your smart academic dashboard</p>
+
+    <div class="dashboard-grid">
+
+      <div class="card">
+        <h3>💬 Doubts</h3>
+        <p>Ask and solve questions</p>
+        <a href="doubts.html">Open →</a>
+      </div>
+
+      <div class="card">
+        <h3>📄 Notes</h3>
+        <p>Access study materials</p>
+        <a href="notes.html">Open →</a>
+      </div>
+
+      <div class="card">
+        <h3>📌 Assignments</h3>
+        <p>Manage tasks</p>
+        <a href="assignments.html">Open →</a>
+      </div>
+
+      <div class="card">
+        <h3>🎓 Classroom</h3>
+        <p>Join live classes</p>
+        <a href="classroom.html">Open →</a>
+      </div>
+
     </div>
-
-    <div class="stat-box">
-      <h3>📄 Notes</h3>
-      <p>Study materials</p>
-    </div>
-
-    <div class="stat-box">
-      <h3>📌 Assignments</h3>
-      <p>Track tasks</p>
-    </div>
-
-    <div class="stat-box">
-      <h3>🎓 Classroom</h3>
-      <p>Live sessions</p>
-    </div>
-  </div>
-
-  <!-- QUICK ACTIONS -->
-  <div class="quick-actions">
-
-    <a href="doubts.html" class="action-btn">Go to Doubts →</a>
-    <a href="notes.html" class="action-btn">View Notes →</a>
-    <a href="assignments.html" class="action-btn">Assignments →</a>
-    <a href="classroom.html" class="action-btn">Enter Class →</a>
 
   </div>
 
 </div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
