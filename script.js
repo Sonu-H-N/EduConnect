@@ -649,3 +649,12 @@ function exportPDF() {
     container.appendChild(div);
   });
 }
+// SHOW USER NAME
+document.addEventListener("DOMContentLoaded", () => {
+  const user = localStorage.getItem("user");
+
+  const greeting = document.getElementById("userGreeting");
+  if (greeting) {
+    greeting.textContent = user ? "Welcome, " + user : "Welcome!";
+  }
+});
