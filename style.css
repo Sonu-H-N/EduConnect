@@ -625,3 +625,35 @@ body {
   color: #4a90e2;
   font-weight: 500;
 }
+/* DARK MODE FULL FIX */
+.dark-mode {
+  background: #111827;
+  color: #f9fafb;
+}
+
+/* MAIN CONTENT */
+.dark-mode .main-content {
+  background: #111827;
+  color: #f9fafb;
+}
+
+/* SIDEBAR */
+.dark-mode .sidebar {
+  background: #020617;
+}
+
+/* CARDS */
+.dark-mode .card {
+  background: #1f2937;
+  color: #f9fafb;
+}
+
+/* LINKS */
+.dark-mode a {
+  color: #60a5fa;
+}
+
+/* TEXT */
+.dark-mode .subtitle {
+  color: #9ca3af;
+}

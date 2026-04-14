@@ -209,29 +209,29 @@ function deleteAssignment(index) {
 
   loadAssignments();
 }
-// THEME SYSTEM
+// DARK MODE FIX
 document.addEventListener("DOMContentLoaded", () => {
   const toggleBtn = document.getElementById("themeToggle");
+
+  if (!toggleBtn) return;
 
   // Load saved theme
   if (localStorage.getItem("theme") === "dark") {
     document.body.classList.add("dark-mode");
-    if (toggleBtn) toggleBtn.textContent = "☀️";
+    toggleBtn.textContent = "☀️";
   }
 
-  if (toggleBtn) {
-    toggleBtn.addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
+  toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
 
-      if (document.body.classList.contains("dark-mode")) {
-        localStorage.setItem("theme", "dark");
-        toggleBtn.textContent = "☀️";
-      } else {
-        localStorage.setItem("theme", "light");
-        toggleBtn.textContent = "🌙";
-      }
-    });
-  }
+    if (document.body.classList.contains("dark-mode")) {
+      localStorage.setItem("theme", "dark");
+      toggleBtn.textContent = "☀️";
+    } else {
+      localStorage.setItem("theme", "light");
+      toggleBtn.textContent = "🌙";
+    }
+  });
 });
 // CREATE CLASS (Teacher)
 function createClass() {
