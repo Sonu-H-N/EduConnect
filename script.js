@@ -658,3 +658,7 @@ document.addEventListener("DOMContentLoaded", () => {
     greeting.textContent = user ? "Welcome, " + user : "Welcome!";
   }
 });
+function logout() {
+  localStorage.clear();
+  window.location.href = "index.html";
+}
