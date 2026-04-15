@@ -8,30 +8,26 @@
 
 <body>
 
-<div class="app-container">
+<div class="layout">
 
   <!-- SIDEBAR -->
   <div class="sidebar">
     <h2>EduConnect</h2>
 
-    <a href="dashboard.html" class="active">🏠 Dashboard</a>
-    <a href="doubts.html">💬 Doubts</a>
-    <a href="notes.html">📄 Notes</a>
-    <a href="assignments.html">📌 Assignments</a>
-    <a href="classroom.html">🎓 Classroom</a>
-    <a href="settings.html">⚙️ Settings</a>
+    <a href="dashboard.html" class="active">Dashboard</a>
+    <a href="doubts.html">Doubts</a>
+    <a href="notes.html">Notes</a>
+    <a href="assignments.html">Assignments</a>
 
-    <button id="themeToggle">🌙</button>
-    <a href="#" onclick="logout()">🚪 Logout</a>
+    <button onclick="logout()">Logout</button>
   </div>
 
-  <!-- MAIN CONTENT -->
-  <div class="main-content">
+  <!-- MAIN -->
+  <div class="content">
+    <h1 id="welcome"></h1>
+    <p class="sub">Your academic dashboard</p>
 
-    <h1>Welcome 👋</h1>
-    <p class="subtitle">Your smart academic dashboard</p>
-
-    <div class="dashboard-grid">
+    <div class="grid">
 
       <div class="card">
         <h3>💬 Doubts</h3>
@@ -47,14 +43,8 @@
 
       <div class="card">
         <h3>📌 Assignments</h3>
-        <p>Manage tasks</p>
+        <p>Track tasks</p>
         <a href="assignments.html">Open →</a>
-      </div>
-
-      <div class="card">
-        <h3>🎓 Classroom</h3>
-        <p>Join live classes</p>
-        <a href="classroom.html">Open →</a>
       </div>
 
     </div>

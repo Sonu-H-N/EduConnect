@@ -30,3 +30,16 @@ function logout() {
   localStorage.clear();
   window.location.href = "index.html";
 }
+document.addEventListener("DOMContentLoaded", () => {
+  const user = localStorage.getItem("user");
+  const welcome = document.getElementById("welcome");
+
+  if (welcome) {
+    welcome.textContent = "Welcome " + (user || "User") + " 👋";
+  }
+});
+
+function logout() {
+  localStorage.clear();
+  window.location.href = "index.html";
+}
