@@ -99,7 +99,7 @@ function addNote() {
   loadNotes();
 }
 
-/// LOAD NOTES
+// LOAD NOTES
 function loadNotes() {
   const container = document.getElementById("notesList");
 
@@ -109,14 +109,13 @@ function loadNotes() {
 
   container.innerHTML = "";
 
-  notes.forEach((note, index) => {
+  notes.forEach(note => {
     const div = document.createElement("div");
     div.className = "note-card";
 
     div.innerHTML = `
       <h3>${note.title}</h3>
       <p>${note.content}</p>
-      <button onclick="deleteNote(${index})">🗑️ Delete</button>
     `;
 
     container.appendChild(div);
