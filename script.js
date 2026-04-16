@@ -80,3 +80,47 @@ function loadDoubts() {
 
 // AUTO LOAD
 document.addEventListener("DOMContentLoaded", loadDoubts);
+// ADD NOTE
+function addNote() {
+  const title = document.getElementById("noteTitle").value;
+  const content = document.getElementById("noteContent").value;
+
+  if (title === "" || content === "") return;
+
+  let notes = JSON.parse(localStorage.getItem("notes")) || [];
+
+  notes.push({ title, content });
+
+  localStorage.setItem("notes", JSON.stringify(notes));
+
+  document.getElementById("noteTitle").value = "";
+  document.getElementById("noteContent").value = "";
+
+  loadNotes();
+}
+
+// LOAD NOTES
+function loadNotes() {
+  const container = document.getElementById("notesList");
+
+  if (!container) return;
+
+  let notes = JSON.parse(localStorage.getItem("notes")) || [];
+
+  container.innerHTML = "";
+
+  notes.forEach(note => {
+    const div = document.createElement("div");
+    div.className = "note-card";
+
+    div.innerHTML = `
+      <h3>${note.title}</h3>
+      <p>${note.content}</p>
+    `;
+
+    container.appendChild(div);
+  });
+}
+
+// AUTO LOAD
+document.addEventListener("DOMContentLoaded", loadNotes);

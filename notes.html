@@ -2,48 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EduConnect - Notes</title>
-
-  <link rel="stylesheet" href="style.css">
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
-<!-- LOADER -->
-<div id="loader">
-  <div class="spinner"></div>
-  <p>Loading EduConnect...</p>
-</div>
-<body>
-
-  <<!DOCTYPE html>
-<html>
-<head>
   <title>Notes</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="app-container">
+<div class="layout">
 
+  <!-- SIDEBAR -->
   <div class="sidebar">
     <h2>EduConnect</h2>
-    <a href="dashboard.html">🏠 Dashboard</a>
-    <a href="doubts.html">💬 Doubts</a>
-    <a href="notes.html">📄 Notes</a>
-    <a href="assignments.html">📌 Assignments</a>
-    <a href="classroom.html">🎓 Classroom</a>
-    <button id="themeToggle">🌙 Theme</button>
-    <a href="#" onclick="logout()">🚪 Logout</a>
+
+    <a href="dashboard.html">Dashboard</a>
+    <a href="doubts.html">Doubts</a>
+    <a href="notes.html" class="active">Notes</a>
+    <a href="assignments.html">Assignments</a>
+
+    <button onclick="logout()">Logout</button>
   </div>
 
-  <div class="main-content">
-    <h1>Notes 📄</h1>
+  <!-- MAIN -->
+  <div class="content">
+    <h1>📄 Notes</h1>
 
-    <input type="text" id="noteTitle" placeholder="Title">
-    <input type="text" id="noteLink" placeholder="Link">
-    <button onclick="addNote()" class="btn">Add</button>
+    <input type="text" id="noteTitle" placeholder="Note Title">
+    <input type="text" id="noteContent" placeholder="Paste link or content">
+
+    <button onclick="addNote()">Add Note</button>
 
     <div id="notesList"></div>
   </div>
@@ -51,40 +37,6 @@
 </div>
 
 <script src="script.js"></script>
-</body>
-</html>
-
-  <!-- Main Container -->
-  <div class="notes-container">
-
-    <h1>Study Notes 📄</h1>
-    <p class="subtitle">Access and share study materials</p>
-
-    <!-- Add Notes -->
-    <div class="add-notes">
-      <h3>Add Notes</h3>
-
-      <input type="text" id="noteTitle" placeholder="Enter subject / title">
-      <input type="text" id="noteLink" placeholder="Paste notes link (Google Drive / PDF)">
-
-      <button onclick="addNote()" class="btn">Add Note</button>
-    </div>
-
-    <!-- Notes Display -->
-    <div class="notes-list" id="notesList">
-      <!-- Notes will be displayed here -->
-    </div>
-
-  </div>
-
-  <script src="script.js"></script>
 
 </body>
 </html>
-<a href="settings.html">⚙️ Settings</a>
-<a href="dashboard.html" class="active">🏠 Dashboard</a>
-<a href="doubts.html">💬 Doubts</a>
-<a href="notes.html">📄 Notes</a>
-<a href="assignments.html">📌 Assignments</a>
-<a href="classroom.html">🎓 Classroom</a>
-<a href="settings.html">⚙️ Settings</a>

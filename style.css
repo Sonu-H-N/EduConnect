@@ -106,3 +106,18 @@ li {
   margin: 10px 0;
   border-radius: 6px;
 }
+/* NOTES */
+#notesList {
+  margin-top: 20px;
+}
+
+.note-card {
+  background: white;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+}
+
+.note-card a {
+  color: #2563eb;
+}
