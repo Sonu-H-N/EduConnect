@@ -43,3 +43,40 @@ function logout() {
   localStorage.clear();
   window.location.href = "index.html";
 }
+// ADD DOUBT
+function addDoubt() {
+  const input = document.getElementById("doubtInput");
+  const doubt = input.value;
+
+  if (doubt === "") return;
+
+  let doubts = JSON.parse(localStorage.getItem("doubts")) || [];
+
+  doubts.push(doubt);
+
+  localStorage.setItem("doubts", JSON.stringify(doubts));
+
+  input.value = "";
+
+  loadDoubts();
+}
+
+// LOAD DOUBTS
+function loadDoubts() {
+  const list = document.getElementById("doubtList");
+
+  if (!list) return;
+
+  let doubts = JSON.parse(localStorage.getItem("doubts")) || [];
+
+  list.innerHTML = "";
+
+  doubts.forEach(d => {
+    const li = document.createElement("li");
+    li.textContent = d;
+    list.appendChild(li);
+  });
+}
+
+// AUTO LOAD
+document.addEventListener("DOMContentLoaded", loadDoubts);

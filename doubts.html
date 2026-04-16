@@ -2,86 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EduConnect - Doubts</title>
-
-  <link rel="stylesheet" href="style.css">
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
-<!-- LOADER -->
-<div id="loader">
-  <div class="spinner"></div>
-  <p>Loading EduConnect...</p>
-</div>
-<body>
-
-  <!DOCTYPE html>
-<html>
-<head>
   <title>Doubts</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="app-container">
+<div class="layout">
 
+  <!-- SIDEBAR -->
   <div class="sidebar">
     <h2>EduConnect</h2>
-    <a href="dashboard.html">🏠 Dashboard</a>
-    <a href="doubts.html">💬 Doubts</a>
-    <a href="notes.html">📄 Notes</a>
-    <a href="assignments.html">📌 Assignments</a>
-    <a href="classroom.html">🎓 Classroom</a>
-    <button id="themeToggle">🌙 Theme</button>
-    <a href="#" onclick="logout()">🚪 Logout</a>
+
+    <a href="dashboard.html">Dashboard</a>
+    <a href="doubts.html" class="active">Doubts</a>
+    <a href="notes.html">Notes</a>
+    <a href="assignments.html">Assignments</a>
+
+    <button onclick="logout()">Logout</button>
   </div>
 
-  <div class="main-content">
-    <h1>Doubts 💬</h1>
+  <!-- MAIN -->
+  <div class="content">
+    <h1>💬 Doubts</h1>
 
-    <input type="text" id="doubtInput" placeholder="Enter doubt">
-    <button onclick="addDoubt()" class="btn">Post</button>
+    <input type="text" id="doubtInput" placeholder="Enter your doubt">
+    <button onclick="addDoubt()">Post</button>
 
-    <div id="doubtList"></div>
+    <ul id="doubtList"></ul>
   </div>
 
 </div>
 
 <script src="script.js"></script>
-</body>
-</html>
-<a href="settings.html">⚙️ Settings</a>
-
-  <!-- Main Container -->
-  <div class="doubts-container">
-
-    <h1>Doubt Discussion 💬</h1>
-    <p class="subtitle">Ask questions and get answers</p>
-
-    <!-- Add Doubt -->
-    <div class="add-doubt">
-      <h3>Post a Doubt</h3>
-
-      <input type="text" id="doubtInput" placeholder="Enter your question...">
-      <button onclick="addDoubt()" class="btn">Post</button>
-    </div>
-
-    <!-- Doubts List -->
-    <div class="doubt-list" id="doubtList">
-      <!-- Doubts will appear here -->
-    </div>
-
-  </div>
-
-  <script src="script.js"></script>
 
 </body>
 </html>
-<a href="dashboard.html">🏠 Dashboard</a>
-<a href="doubts.html">💬 Doubts</a>
-<a href="notes.html" class="active">📄 Notes</a>
-<a href="assignments.html">📌 Assignments</a>
-<a href="classroom.html">🎓 Classroom</a>
-<a href="settings.html">⚙️ Settings</a>
