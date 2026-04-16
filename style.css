@@ -121,3 +121,31 @@ li {
 .note-card a {
   color: #2563eb;
 }
+/* DARK MODE */
+.dark {
+  background: #111827;
+  color: white;
+}
+
+/* SIDEBAR */
+.dark .sidebar {
+  background: #020617;
+}
+
+/* MAIN CONTENT */
+.dark .content {
+  background: #111827;
+}
+
+/* CARDS */
+.dark .card,
+.dark .box,
+.dark .note-card {
+  background: #1f2937;
+  color: white;
+}
+
+/* LINKS */
+.dark a {
+  color: #60a5fa;
+}
