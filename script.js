@@ -186,3 +186,53 @@ function logout() {
   localStorage.clear();
   window.location.href = "index.html";
 }
+// CREATE CLASS (Teacher)
+function createClass() {
+  const code = Math.random().toString(36).substring(2, 7).toUpperCase();
+
+  localStorage.setItem("classCode", code);
+  localStorage.setItem("members", JSON.stringify([]));
+
+  document.getElementById("classCode").textContent = "Class Code: " + code;
+}
+
+// JOIN CLASS (Student)
+function joinClass() {
+  const input = document.getElementById("joinCode").value;
+  const code = localStorage.getItem("classCode");
+
+  if (input !== code) {
+    alert("Invalid Code!");
+    return;
+  }
+
+  const user = localStorage.getItem("user") || "Student";
+
+  let members = JSON.parse(localStorage.getItem("members")) || [];
+
+  members.push(user);
+
+  localStorage.setItem("members", JSON.stringify(members));
+
+  loadMembers();
+}
+
+// LOAD MEMBERS
+function loadMembers() {
+  const list = document.getElementById("memberList");
+
+  if (!list) return;
+
+  let members = JSON.parse(localStorage.getItem("members")) || [];
+
+  list.innerHTML = "";
+
+  members.forEach(m => {
+    const li = document.createElement("li");
+    li.textContent = m;
+    list.appendChild(li);
+  });
+}
+
+// AUTO LOAD
+document.addEventListener("DOMContentLoaded", loadMembers);

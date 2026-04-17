@@ -23,6 +23,7 @@
 <div class="app-container">
 
   <div class="sidebar">
+    <button id="themeToggle">🌙</button>
     <h2>EduConnect</h2>
     <a href="dashboard.html">🏠 Dashboard</a>
     <a href="doubts.html">💬 Doubts</a>
@@ -119,3 +120,52 @@
 <a href="assignments.html">📌 Assignments</a>
 <a href="classroom.html">🎓 Classroom</a>
 <a href="settings.html">⚙️ Settings</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Classroom</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h2>EduConnect</h2>
+
+    <a href="dashboard.html">Dashboard</a>
+    <a href="doubts.html">Doubts</a>
+    <a href="notes.html">Notes</a>
+    <a href="assignments.html">Assignments</a>
+    <a href="classroom.html" class="active">Classroom</a>
+
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <!-- MAIN -->
+  <div class="content">
+    <h1>🎓 Classroom</h1>
+
+    <!-- CREATE CLASS -->
+    <button onclick="createClass()">Create Class</button>
+    <p id="classCode"></p>
+
+    <!-- JOIN CLASS -->
+    <input type="text" id="joinCode" placeholder="Enter class code">
+    <button onclick="joinClass()">Join</button>
+
+    <!-- MEMBERS -->
+    <h3>Members</h3>
+    <ul id="memberList"></ul>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
