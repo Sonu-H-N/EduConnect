@@ -109,13 +109,16 @@ function loadNotes() {
 
   container.innerHTML = "";
 
-  notes.forEach(note => {
+  notes.forEach((note, index) => {
     const div = document.createElement("div");
     div.className = "note-card";
 
     div.innerHTML = `
       <h3>${note.title}</h3>
       <p>${note.content}</p>
+
+      <button onclick="editNote(${index})">✏️ Edit</button>
+      <button onclick="deleteNote(${index})">🗑️ Delete</button>
     `;
 
     container.appendChild(div);
@@ -153,6 +156,22 @@ function deleteNote(index) {
   let notes = JSON.parse(localStorage.getItem("notes")) || [];
 
   notes.splice(index, 1);
+
+  localStorage.setItem("notes", JSON.stringify(notes));
+
+  loadNotes();
+}
+// EDIT NOTE
+function editNote(index) {
+  let notes = JSON.parse(localStorage.getItem("notes")) || [];
+
+  let newTitle = prompt("Edit Title:", notes[index].title);
+  let newContent = prompt("Edit Content:", notes[index].content);
+
+  if (newTitle === null || newContent === null) return;
+
+  notes[index].title = newTitle;
+  notes[index].content = newContent;
 
   localStorage.setItem("notes", JSON.stringify(notes));
 

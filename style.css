@@ -166,3 +166,20 @@ li {
 .note-card button:hover {
   background: #dc2626;
 }
+.note-card button {
+  margin-right: 5px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.note-card button:first-child {
+  background: #f59e0b;
+  color: white;
+}
+
+.note-card button:last-child {
+  background: #ef4444;
+  color: white;
+}
