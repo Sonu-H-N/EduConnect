@@ -177,3 +177,12 @@ function editNote(index) {
 
   loadNotes();
 }
+function logout() {
+  localStorage.clear(); // remove all stored data
+  window.location.href = "index.html"; // go back to login page
+}
+function logout() {
+  alert("Logout clicked"); // test
+  localStorage.clear();
+  window.location.href = "index.html";
+}
