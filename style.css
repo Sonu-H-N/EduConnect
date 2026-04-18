@@ -193,3 +193,13 @@ li {
   margin: 5px 0;
   border-radius: 6px;
 }
+#attendanceList {
+  margin-top: 10px;
+}
+
+#attendanceList li {
+  background: white;
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 6px;
+}
