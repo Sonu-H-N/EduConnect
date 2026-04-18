@@ -1,7 +1,14 @@
 /* RESET */
-body {
+* {
   margin: 0;
-  font-family: Arial, sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background: #f4f6f9;
+  color: #333;
 }
 
 /* LAYOUT */
@@ -11,24 +18,26 @@ body {
 
 /* SIDEBAR */
 .sidebar {
-  width: 220px;
+  width: 230px;
   height: 100vh;
   background: #111827;
   color: white;
-  padding: 20px;
+  padding: 25px;
 }
 
 .sidebar h2 {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  font-size: 20px;
 }
 
 .sidebar a {
   display: block;
-  color: #bbb;
+  color: #9ca3af;
   text-decoration: none;
-  margin: 10px 0;
-  padding: 8px;
-  border-radius: 6px;
+  margin: 12px 0;
+  padding: 10px;
+  border-radius: 8px;
+  transition: 0.2s;
 }
 
 .sidebar a:hover,
@@ -38,26 +47,31 @@ body {
 }
 
 .sidebar button {
-  margin-top: 20px;
+  margin-top: 25px;
   width: 100%;
   padding: 10px;
   background: #ef4444;
   border: none;
   color: white;
-  border-radius: 6px;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
-/* CONTENT */
+/* MAIN CONTENT */
 .content {
   flex: 1;
   padding: 30px;
-  background: #f3f4f6;
+  background: #f4f6f9;
 }
 
-/* TEXT */
+/* HEADINGS */
+h1 {
+  margin-bottom: 5px;
+}
+
 .sub {
-  color: gray;
-  margin-bottom: 20px;
+  color: #6b7280;
+  margin-bottom: 25px;
 }
 
 /* GRID */
@@ -71,102 +85,69 @@ body {
 .card {
   background: white;
   padding: 20px;
-  border-radius: 10px;
-  transition: 0.3s;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  border-radius: 12px;
+  transition: 0.25s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
 .card:hover {
   transform: translateY(-5px);
 }
 
-/* LINKS */
+/* CARD LINK */
 .card a {
+  display: inline-block;
+  margin-top: 10px;
   text-decoration: none;
   color: #2563eb;
-  font-weight: bold;
+  font-weight: 500;
 }
-input {
+
+/* INPUT + BUTTON (SCOPED) */
+.content input {
   padding: 10px;
-  width: 60%;
+  width: 250px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
   margin-right: 10px;
 }
 
-button {
-  padding: 10px;
+.content button {
+  padding: 10px 14px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
+.content button:hover {
+  background: #1d4ed8;
+}
+
+/* LIST */
 ul {
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 li {
   background: white;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 6px;
-}
-/* NOTES */
-#notesList {
-  margin-top: 20px;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
 }
 
+/* NOTES */
 .note-card {
   background: white;
   padding: 15px;
   margin: 10px 0;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
-.note-card a {
-  color: #2563eb;
-}
-
-.note-card a {
-  color: #2563eb;
-}
-/* DARK MODE */
-.dark {
-  background: #111827;
-  color: white;
-}
-
-/* SIDEBAR */
-.dark .sidebar {
-  background: #020617;
-}
-
-/* MAIN CONTENT */
-.dark .content {
-  background: #111827;
-}
-
-/* CARDS */
-.dark .card,
-.dark .box,
-.dark .note-card {
-  background: #1f2937;
-  color: white;
-}
-
-/* LINKS */
-.dark a {
-  color: #60a5fa;
-}
 .note-card button {
   margin-top: 10px;
-  padding: 6px 10px;
-  background: #ef4444;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.note-card button:hover {
-  background: #dc2626;
-}
-.note-card button {
   margin-right: 5px;
   padding: 6px 10px;
   border: none;
@@ -183,23 +164,37 @@ li {
   background: #ef4444;
   color: white;
 }
-#memberList {
-  margin-top: 10px;
-}
 
-#memberList li {
-  background: white;
-  padding: 8px;
-  margin: 5px 0;
-  border-radius: 6px;
-}
-#attendanceList {
-  margin-top: 10px;
-}
-
+/* MEMBERS + ATTENDANCE */
+#memberList li,
 #attendanceList li {
   background: white;
-  padding: 8px;
-  margin: 5px 0;
-  border-radius: 6px;
+  padding: 10px;
+  margin: 6px 0;
+  border-radius: 8px;
+}
+
+/* DARK MODE */
+.dark {
+  background: #111827;
+  color: #f9fafb;
+}
+
+.dark .sidebar {
+  background: #020617;
+}
+
+.dark .content {
+  background: #111827;
+}
+
+.dark .card,
+.dark li,
+.dark .note-card {
+  background: #1f2937;
+  color: #f9fafb;
+}
+
+.dark a {
+  color: #60a5fa;
 }
