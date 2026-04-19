@@ -1,54 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Settings</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduConnect — Settings</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
-<!-- LOADER -->
-<div id="loader">
-  <div class="spinner"></div>
-  <p>Loading EduConnect...</p>
-</div>
 <body>
 
-<div class="app-container">
+<div class="layout">
 
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <h2>EduConnect</h2>
-    <a href="dashboard.html">🏠 Dashboard</a>
-    <a href="doubts.html">💬 Doubts</a>
-    <a href="notes.html">📄 Notes</a>
-    <a href="assignments.html">📌 Assignments</a>
-    <a href="classroom.html">🎓 Classroom</a>
-    <a href="settings.html">⚙️ Settings</a>
-    <button id="themeToggle">🌙 Theme</button>
-    <a href="#" onclick="logout()">🚪 Logout</a>
-  </div>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-icon">🎓</div>
+      <span>EduConnect</span>
+    </div>
 
-  <!-- Main -->
-  <div class="main-content">
-    <h1>⚙️ Settings</h1>
+    <div class="sidebar-section">Menu</div>
+    <nav>
+      <a href="dashboard.html"><span class="nav-icon">🏠</span> Dashboard</a>
+      <a href="doubts.html"><span class="nav-icon">💬</span> Doubts</a>
+      <a href="notes.html"><span class="nav-icon">📄</span> Notes</a>
+      <a href="assignments.html"><span class="nav-icon">📌</span> Assignments</a>
+      <a href="classroom.html"><span class="nav-icon">🎓</span> Classroom</a>
+      <a href="settings.html" class="active"><span class="nav-icon">⚙️</span> Settings</a>
+    </nav>
 
-    <div class="settings-box">
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="avatar" id="sidebarAvatar">U</div>
+        <div class="user-info">
+          <div class="name" id="sidebarName">User</div>
+          <div class="role" id="sidebarRole">student</div>
+        </div>
+      </div>
+      <button class="btn-logout" onclick="logout()">🚪 Logout</button>
+    </div>
+  </aside>
 
-      <h3>Update Profile</h3>
-      <input type="text" id="newName" placeholder="New username">
-      <select id="newRole">
-        <option value="student">Student</option>
-        <option value="teacher">Teacher</option>
-      </select>
-      <button onclick="saveSettings()" class="btn">Save</button>
+  <!-- MAIN CONTENT -->
+  <main class="content">
 
-      <hr>
+    <div class="page-header">
+      <h1>⚙️ Settings</h1>
+      <p>Manage your account and preferences</p>
+    </div>
 
-      <h3>Danger Zone 🚨</h3>
-      <button onclick="clearData()" class="btn danger">Clear All Data</button>
+    <!-- Profile Settings -->
+    <div class="panel" style="max-width: 520px;">
+      <div class="settings-section">
+        <h3>Profile</h3>
+        <div class="input-row" style="margin-bottom:12px">
+          <input
+            type="text"
+            id="newName"
+            class="input-field"
+            placeholder="Your name"
+          >
+        </div>
+        <div class="input-row" style="margin-bottom:16px">
+          <select id="newRole" class="input-field">
+            <option value="student">Student</option>
+            <option value="teacher">Teacher</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" onclick="saveSettings()">Save Changes</button>
+      </div>
+
+      <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+
+      <!-- Danger Zone -->
+      <div class="settings-section">
+        <h3>Danger Zone</h3>
+        <div class="danger-zone">
+          <p style="font-size:14px;color:var(--text-2);margin-bottom:14px">
+            Permanently delete all your notes, doubts, assignments, and classroom data. This cannot be undone.
+          </p>
+          <button class="btn btn-danger" onclick="clearData()">🗑️ Clear All Data</button>
+        </div>
+      </div>
 
     </div>
-  </div>
+
+  </main>
 
 </div>
+
+<!-- THEME TOGGLE -->
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</button>
 
 <script src="script.js"></script>
 </body>
