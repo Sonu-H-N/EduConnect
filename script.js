@@ -280,3 +280,26 @@ document.addEventListener("DOMContentLoaded", () => {
   loadMembers();
   loadAttendance();
 });
+function exportPDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  let data = JSON.parse(localStorage.getItem("attendance") || "[]");
+
+  if (data.length === 0) {
+    alert("No data!");
+    return;
+  }
+
+  doc.setFontSize(16);
+  doc.text("Attendance Report", 20, 20);
+
+  let y = 30;
+
+  data.forEach((item, i) => {
+    doc.text(`${i + 1}. ${item.name} - ${item.status}`, 20, y);
+    y += 10;
+  });
+
+  doc.save("attendance.pdf");
+}
