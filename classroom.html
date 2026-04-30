@@ -5,134 +5,6 @@
   <title>EduConnect - Classroom</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<!-- LOADER -->
-<div id="loader">
-  <div class="spinner"></div>
-  <p>Loading EduConnect...</p>
-</div>
-<body>
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Assignments</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<div class="app-container">
-
-  <div class="sidebar">
-    <button id="themeToggle">🌙</button>
-    <h2>EduConnect</h2>
-    <a href="dashboard.html">🏠 Dashboard</a>
-    <a href="doubts.html">💬 Doubts</a>
-    <a href="notes.html">📄 Notes</a>
-    <a href="assignments.html">📌 Assignments</a>
-    <a href="classroom.html">🎓 Classroom</a>
-    <button id="themeToggle">🌙 Theme</button>
-    <a href="#" onclick="logout()">🚪 Logout</a>
-  </div>
-
-  <div class="main-content">
-    <h1>Assignments 📌</h1>
-
-    <input type="text" id="assignmentTitle" placeholder="Title">
-    <input type="text" id="assignmentDesc" placeholder="Description">
-    <button onclick="addAssignment()" class="btn">Add</button>
-    <button onclick="exportPDF()">📄 Export PDF</button>
-
-    <div id="assignmentList"></div>
-  </div>
-
-</div>
-
-<script src="script.js"></script>
-</body>
-</html>
-
-<div class="notes-container">
-
-  <h1>Virtual Classroom 🎓</h1>
-
-  <!-- Teacher Section -->
-  <div id="teacherSection">
-    <h3>Create Classroom</h3>
-    <button onclick="createClass()" class="btn">Create Class</button>
-    <p id="classCodeDisplay"></p>
-  </div>
-
-  <!-- Student Section -->
-  <div id="studentSection">
-    <h3>Join Classroom</h3>
-    <input type="text" id="classCodeInput" placeholder="Enter Class Code">
-    <button onclick="joinClass()" class="btn">Join</button>
-  </div>
-
-  <!-- Members -->
-  <div id="classMembers">
-    <h3>Class Members</h3>
-    <ul id="memberList"></ul>
-  </div>
-  <div class="attendance-box">
-    <button onclick="exportPDF()" class="btn">Download PDF 📄</button>
-  <h3>📋 Attendance</h3>
-
-  <button onclick="generateAttendance()" class="btn">Generate List</button>
-
-  <div id="attendanceList"></div>
-</div>
-<h3>📋 Attendance</h3>
-
-<button onclick="markAttendance()">Mark Attendance</button>
-
-<ul id="attendanceList"></ul>
-
-<!-- Chat Section -->
-<div class="chat-box">
-  <h3>Class Chat 💬</h3>
-
-  <div id="chatMessages" class="chat-messages"></div>
-
-  <div class="chat-input">
-    <input type="text" id="chatInput" placeholder="Type message...">
-    <button onclick="sendMessage()" class="btn">Send</button>
-  </div>
-</div>
-</div>
-<!-- VIDEO CALL -->
-<div class="video-box">
-  <h3>Live Video Class 🎥</h3>
-
-  <div class="video-container">
-    <video id="localVideo" autoplay muted></video>
-    <video id="remoteVideo" autoplay></video>
-  </div>
-
-  <div class="video-controls">
-    <button onclick="startCall()" class="btn">Start</button>
-    <button onclick="callUser()" class="btn">Call</button>
-    <button onclick="endCall()" class="btn">End</button>
-  </div>
-</div>
-
-<script src="script.js"></script>
-</body>
-</html>
-<a href="settings.html">⚙️ Settings</a>
-<a href="dashboard.html">🏠 Dashboard</a>
-<a href="doubts.html">💬 Doubts</a>
-<a href="notes.html" class="active">📄 Notes</a>
-<a href="assignments.html">📌 Assignments</a>
-<a href="classroom.html">🎓 Classroom</a>
-<a href="settings.html">⚙️ Settings</a>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Classroom</title>
-  <link rel="stylesheet" href="style.css">
-</head>
 
 <body>
 
@@ -142,30 +14,41 @@
   <div class="sidebar">
     <h2>EduConnect</h2>
 
-    <a href="dashboard.html">Dashboard</a>
-    <a href="doubts.html">Doubts</a>
-    <a href="notes.html">Notes</a>
-    <a href="assignments.html">Assignments</a>
-    <a href="classroom.html" class="active">Classroom</a>
+    <a href="dashboard.html">🏠 Dashboard</a>
+    <a href="doubts.html">💬 Doubts</a>
+    <a href="notes.html">📄 Notes</a>
+    <a href="assignments.html">📌 Assignments</a>
+    <a href="classroom.html" class="active">🎓 Classroom</a>
 
-    <button onclick="logout()">Logout</button>
+    <button id="themeToggle">🌙</button>
+    <button onclick="logout()">🚪 Logout</button>
   </div>
 
-  <!-- MAIN -->
+  <!-- MAIN CONTENT -->
   <div class="content">
+
     <h1>🎓 Classroom</h1>
 
     <!-- CREATE CLASS -->
-    <button onclick="createClass()">Create Class</button>
-    <p id="classCode"></p>
+    <h3>Create Class</h3>
+    <button onclick="createClass()" class="btn">Create</button>
+    <p id="classCodeDisplay"></p>
 
     <!-- JOIN CLASS -->
+    <h3>Join Class</h3>
     <input type="text" id="joinCode" placeholder="Enter class code">
-    <button onclick="joinClass()">Join</button>
+    <button onclick="joinClass()" class="btn">Join</button>
 
     <!-- MEMBERS -->
     <h3>Members</h3>
     <ul id="memberList"></ul>
+
+    <!-- ATTENDANCE -->
+    <h3>📋 Attendance</h3>
+    <button onclick="generateAttendance()" class="btn">Generate</button>
+    <button onclick="exportPDF()" class="btn">📄 Export PDF</button>
+
+    <ul id="attendanceList"></ul>
 
   </div>
 
