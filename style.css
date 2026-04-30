@@ -784,3 +784,15 @@ body.dark .badge-amber { background: rgba(245,158,11,.2); color: #fcd34d; }
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+body.dark {
+  background: #0f172a;
+  color: white;
+}
+
+body.dark .sidebar {
+  background: #020617;
+}
+
+body.dark .content {
+  background: #0f172a;
+}

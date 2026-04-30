@@ -40,33 +40,34 @@ function initLogin() {
   });
 }
 
-/* ---------- LOGOUT ---------- */
+// LOGOUT
 function logout() {
   localStorage.clear();
   window.location.href = "index.html";
 }
 
-/* ---------- THEME ---------- */
-function initTheme() {
-  const btn = document.getElementById("themeToggle");
+// THEME (SAFE)
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.getElementById("themeToggle");
 
+  // Apply saved theme
   if (localStorage.getItem("theme") === "dark") {
     document.body.classList.add("dark");
   }
 
-  if (!btn) return;
+  if (!toggle) return;
 
-  btn.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  toggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
 
-  btn.addEventListener("click", () => {
+  toggle.addEventListener("click", () => {
     document.body.classList.toggle("dark");
 
-    const dark = document.body.classList.contains("dark");
-    localStorage.setItem("theme", dark ? "dark" : "light");
+    const isDark = document.body.classList.contains("dark");
 
-    btn.textContent = dark ? "☀️" : "🌙";
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+    toggle.textContent = isDark ? "☀️" : "🌙";
   });
-}
+});
 
 /* ---------- DASHBOARD ---------- */
 function initDashboard() {
