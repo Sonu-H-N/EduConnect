@@ -304,3 +304,29 @@ function exportPDF() {
 
   doc.save("attendance.pdf");
 }
+let localStream = null;
+
+// START VIDEO
+async function startVideo() {
+  try {
+    localStream = await navigator.mediaDevices.getUserMedia({
+      video: true,
+      audio: true
+    });
+
+    const video = document.getElementById("localVideo");
+    video.srcObject = localStream;
+
+  } catch (err) {
+    alert("Camera access denied!");
+    console.error(err);
+  }
+}
+
+// STOP VIDEO
+function stopVideo() {
+  if (localStream) {
+    localStream.getTracks().forEach(track => track.stop());
+    document.getElementById("localVideo").srcObject = null;
+  }
+}

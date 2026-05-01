@@ -795,4 +795,21 @@ body.dark .sidebar {
 
 body.dark .content {
   background: #0f172a;
+}.video-box {
+  margin-top: 15px;
+}
+
+video {
+  width: 300px;
+  height: 200px;
+  background: black;
+  border-radius: 10px;
+}
+
+.video-controls {
+  margin-top: 10px;
+}
+
+.video-controls button {
+  margin-right: 10px;
 }
