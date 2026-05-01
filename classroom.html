@@ -54,6 +54,34 @@
 <div class="video-box">
   <video id="localVideo" autoplay muted></video>
 </div>
+<!-- CHAT + VIDEO SECTION -->
+<div class="chat-video-container">
+
+  <!-- CHAT -->
+  <div class="chat-box">
+    <h3>💬 Classroom Chat</h3>
+
+    <div id="chatMessages" class="chat-messages"></div>
+
+    <div class="chat-input">
+      <input type="text" id="chatInput" placeholder="Type message...">
+      <button onclick="sendMessage()" class="btn">Send</button>
+    </div>
+  </div>
+
+  <!-- VIDEO -->
+  <div class="video-box">
+    <h3>🎥 Live Video</h3>
+
+    <video id="localVideo" autoplay muted></video>
+
+    <div class="video-controls">
+      <button onclick="startVideo()" class="btn">Start</button>
+      <button onclick="stopVideo()" class="btn">Stop</button>
+    </div>
+  </div>
+
+</div>
 
 <div class="video-controls">
   <button onclick="startVideo()" class="btn">Start</button>

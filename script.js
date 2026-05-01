@@ -330,3 +330,68 @@ function stopVideo() {
     document.getElementById("localVideo").srcObject = null;
   }
 }
+// SEND MESSAGE
+function sendMessage() {
+  const input = document.getElementById("chatInput");
+  const msg = input.value.trim();
+
+  if (!msg) return;
+
+  let chats = JSON.parse(localStorage.getItem("chat")) || [];
+
+  chats.push({
+    user: localStorage.getItem("user"),
+    text: msg
+  });
+
+  localStorage.setItem("chat", JSON.stringify(chats));
+
+  input.value = "";
+  loadMessages();
+}
+
+// LOAD MESSAGES
+function loadMessages() {
+  const box = document.getElementById("chatMessages");
+  if (!box) return;
+
+  let chats = JSON.parse(localStorage.getItem("chat")) || [];
+
+  box.innerHTML = "";
+
+  chats.forEach(c => {
+    const div = document.createElement("div");
+    div.innerHTML = `<b>${c.user}:</b> ${c.text}`;
+    box.appendChild(div);
+  });
+
+  box.scrollTop = box.scrollHeight;
+}
+
+// AUTO LOAD EVERY 2 SEC
+setInterval(loadMessages, 2000);
+let stream = null;
+
+async function startVideo() {
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({
+      video: true,
+      audio: true
+    });
+
+    document.getElementById("localVideo").srcObject = stream;
+
+  } catch (err) {
+    alert("Camera not allowed!");
+  }
+}
+
+function stopVideo() {
+  if (stream) {
+    stream.getTracks().forEach(track => track.stop());
+    document.getElementById("localVideo").srcObject = null;
+  }
+}
+document.addEventListener("DOMContentLoaded", () => {
+  loadMessages();
+});
