@@ -853,4 +853,26 @@ video {
   height: 200px;
   background: black;
   border-radius: 10px;
+}/* NOTIFICATION */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #2563eb;
+  color: white;
+  padding: 14px 18px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  z-index: 9999;
+  animation: slideIn 0.3s ease;
+}
+
+/* ANIMATION */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }

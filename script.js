@@ -395,3 +395,56 @@ function stopVideo() {
 document.addEventListener("DOMContentLoaded", () => {
   loadMessages();
 });
+// SHOW TOAST NOTIFICATION
+function showNotification(message) {
+
+  const notif = document.createElement("div");
+  notif.className = "notification";
+
+  notif.innerText = message;
+
+  document.body.appendChild(notif);
+
+  setTimeout(() => {
+    notif.remove();
+  }, 3000);
+}
+// REQUEST NOTIFICATION PERMISSION
+function requestNotificationPermission() {
+  if ("Notification" in window) {
+    Notification.requestPermission();
+  }
+}
+
+// SHOW BROWSER NOTIFICATION
+function browserNotification(text) {
+  if (Notification.permission === "granted") {
+    new Notification("EduConnect 🔔", {
+      body: text
+    });
+  }
+}function sendMessage() {
+  const input = document.getElementById("chatInput");
+  const msg = input.value.trim();
+
+  if (!msg) return;
+
+  let chats = JSON.parse(localStorage.getItem("chat")) || [];
+
+  chats.push({
+    user: localStorage.getItem("user"),
+    text: msg
+  });
+
+  localStorage.setItem("chat", JSON.stringify(chats));
+
+  // 🔔 NOTIFICATIONS
+  showNotification("New message sent!");
+  browserNotification(msg);
+
+  input.value = "";
+  loadMessages();
+}
+document.addEventListener("DOMContentLoaded", () => {
+  requestNotificationPermission();
+});
