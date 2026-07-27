@@ -9,7 +9,7 @@
 ## 📸 Overview
 
 EduConnect is a multi-page academic platform designed as a portfolio / final-year project. It models the day-to-day workflow of a classroom — asking questions, sharing notes, tracking assignments, taking attendance, and meeting live — behind a simple role-based login (Student / Teacher), with every page sharing one consistent design system.
-
+<a href="notice.html">📌 Notice Board</a>
 ---
 
 ## ✨ Features

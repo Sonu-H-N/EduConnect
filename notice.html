@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notice Board | EduConnect</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>EduConnect</h2>
+
+        <a href="dashboard.html">Dashboard</a>
+        <a href="notes.html">Notes</a>
+        <a href="assignments.html">Assignments</a>
+        <a href="classroom.html">Classroom</a>
+        <a href="notice.html" class="active">Notice Board</a>
+
+        <button onclick="logout()">Logout</button>
+    </aside>
+<a href="notice.html">📌 Notice Board</a>
+    <!-- Main -->
+    <main class="content">
+
+        <h1>📌 Notice Board</h1>
+
+        <div id="teacherPanel"></div>
+
+        <div id="noticeList"></div>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

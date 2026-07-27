@@ -802,3 +802,38 @@ a:focus-visible{
     transition-duration:0.01ms !important;
   }
 }
+.notice-card{
+    background:#fff;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.notice-card h3{
+    color:#2563eb;
+    margin-bottom:8px;
+}
+<a href="notice.html">📌 Notice Board</a>
+.notice-date{
+    font-size:13px;
+    color:#777;
+    margin-top:10px;
+}
+
+.notice-actions{
+    margin-top:12px;
+}
+
+.notice-actions button{
+    margin-right:10px;
+}
+
+textarea{
+    width:100%;
+    height:120px;
+    padding:10px;
+    border-radius:10px;
+    resize:none;
+    margin-bottom:10px;
+}

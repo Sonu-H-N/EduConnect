@@ -600,3 +600,128 @@ document.addEventListener("DOMContentLoaded", () => {
     chatPollInterval = setInterval(loadMessages, 2000);
   }
 });
+/* =============================
+   NOTICE BOARD
+============================= */
+
+function loadNoticeBoard(){
+
+    const panel=document.getElementById("teacherPanel");
+    const list=document.getElementById("noticeList");
+
+    if(!list) return;
+
+    let notices=JSON.parse(localStorage.getItem("notices")) || [];
+
+    const role=localStorage.getItem("role");
+
+    if(role==="Teacher"){
+
+        panel.innerHTML=`
+            <div class="card">
+
+                <h2>Create Notice</h2>
+
+                <input id="noticeTitle" placeholder="Notice Title">
+
+                <textarea id="noticeContent"
+                placeholder="Write notice..."></textarea>
+
+                <button onclick="addNotice()">
+                Publish Notice
+                </button>
+
+            </div>
+        `;
+
+    }
+
+    list.innerHTML="";
+
+    notices.reverse().forEach((n,index)=>{
+
+        list.innerHTML+=`
+
+        <div class="notice-card">
+
+            <h3>${n.title}</h3>
+
+            <p>${n.content}</p>
+
+            <div class="notice-date">
+
+                Posted by ${n.author}
+
+                <br>
+
+                ${n.date}
+
+            </div>
+
+            ${
+                role==="Teacher"
+                ?
+                `<div class="notice-actions">
+                    <button onclick="deleteNotice(${notices.length-1-index})">
+                    Delete
+                    </button>
+                </div>`
+                :
+                ""
+            }
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+function addNotice(){
+
+    const title=document.getElementById("noticeTitle").value.trim();
+
+    const content=document.getElementById("noticeContent").value.trim();
+
+    if(title==="" || content===""){
+        alert("Please fill all fields");
+        return;
+    }
+
+    let notices=JSON.parse(localStorage.getItem("notices")) || [];
+
+    notices.push({
+
+        title,
+
+        content,
+
+        author:localStorage.getItem("user"),
+
+        date:new Date().toLocaleString()
+
+    });
+
+    localStorage.setItem("notices",JSON.stringify(notices));
+
+    showNotification("📢 Notice Published");
+
+    loadNoticeBoard();
+
+}
+<a href="notice.html">📌 Notice Board</a>
+function deleteNotice(index){
+
+    let notices=JSON.parse(localStorage.getItem("notices")) || [];
+
+    notices.splice(index,1);
+
+    localStorage.setItem("notices",JSON.stringify(notices));
+
+    showNotification("Notice Deleted");
+
+    loadNoticeBoard();
+
+}
+loadNoticeBoard();
