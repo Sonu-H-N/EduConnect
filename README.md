@@ -1,150 +1,345 @@
 # 🎓 EduConnect
 
-> A web-based student–teacher interaction platform for doubt discussion, notes sharing, assignment tracking, and live classroom sessions — built with vanilla HTML, CSS, and JavaScript.
+> **A modern student–teacher interaction platform** built with **HTML, CSS, and Vanilla JavaScript** that streamlines classroom communication through notes sharing, assignments, announcements, attendance, classroom collaboration, live chat, and video preview.
 
-![License: MIT](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
-
----
-
-## 📸 Overview
-
-EduConnect is a multi-page academic platform designed as a portfolio / final-year project. It models the day-to-day workflow of a classroom — asking questions, sharing notes, tracking assignments, taking attendance, and meeting live — behind a simple role-based login (Student / Teacher), with every page sharing one consistent design system.
-<a href="notice.html">📌 Notice Board</a>
----
-
-## ✨ Features
-
-### 🔐 Authentication
-- Role-based login (Student / Teacher), no password required for this demo
-- Session persisted in `localStorage`; protected pages redirect to login if no session exists
-- Sidebar identity card shows your avatar initial, name, and role on every page
-
-### 💬 Doubts Board
-- Post a question, see it appear instantly for the whole class
-- Delete your own doubts
-
-### 📄 Notes
-- Add notes with a title and free-form content (text, links, anything)
-- **Edit in a modal dialog** — no disruptive browser prompts
-- Delete notes, each card shows a last-updated timestamp
-
-### 📌 Assignments
-- Add a task with an optional description
-- Toggle between **Pending** and **Done** with a status tag
-- Delete completed or outdated assignments
-
-### 🎓 Classroom
-- **Create a class** — generates a short shareable join code
-- **Join a class** by code, builds a member list
-- **Attendance** — generate a sheet from current members, toggle Present/Absent per person
-- **Export attendance to PDF** (via jsPDF)
-- **Live chat** — polls for new messages every 2 seconds within the session
-- **Video preview** — starts your camera/mic via `getUserMedia` for a local live-video panel
-
-### ⚙️ Settings
-- Update your display name and role at any time
-- **Danger zone** — clear all app data (notes, doubts, assignments, classroom state) while keeping you signed in
-
-### 🎨 Interface
-- One consistent sidebar across all pages: brand mark, full navigation, identity card
-- Dark mode toggle, persisted across sessions
-- Toast notifications instead of `alert()` dialogs
-- Status tags (Present/Absent, Pending/Done) rendered in a monospace data style for quick scanning
-- Responsive layout — sidebar collapses to a top bar on small screens
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![MIT License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 
 ---
 
-## 🛠️ Tech Stack
+# 📖 Overview
 
-| Technology | Purpose |
-|---|---|
-| HTML5 | Page structure across 7 views |
-| CSS3 | Shared design system (CSS variables), dark/light themes, responsive layout |
-| Vanilla JavaScript (ES6+) | All app logic, no frameworks |
-| [jsPDF](https://parall.ax/products/jspdf) | Client-side attendance PDF export |
-| `getUserMedia` (WebRTC) | Local camera/mic preview in Classroom |
-| Notifications API | Optional browser notifications for new chat messages |
-| Google Fonts — DM Sans + DM Mono | UI text and data/status labels |
-| localStorage | All data persistence — users, doubts, notes, assignments, classes, attendance, chat |
+EduConnect is a responsive web application designed for educational institutions to improve communication between **students and teachers**.
+
+The platform simulates a real Learning Management System (LMS) by combining classroom management, note sharing, assignment tracking, announcements, attendance, live chat, notifications, and video support into one modern interface.
+
+It is ideal as a **college mini project**, **final-year project**, or **portfolio project**.
 
 ---
 
-## 📂 Project Structure
+# ✨ Features
+
+## 🔐 Authentication
+
+- Role-based Login (Student / Teacher)
+- Session persistence using localStorage
+- Protected pages
+- Dynamic user profile in sidebar
+
+---
+
+## 📊 Dashboard
+
+- Quick navigation cards
+- Personalized welcome section
+- Responsive layout
+- Modern sidebar navigation
+
+---
+
+## 💬 Doubts Board
+
+- Post doubts instantly
+- View classroom discussions
+- Delete doubts
+- Stored locally
+
+---
+
+## 📄 Notes Management
+
+- Add notes
+- Edit notes
+- Delete notes
+- Timestamp for every note
+- Modal-based editing
+
+---
+
+## 📌 Notice Board
+
+Teachers can
+
+- Publish announcements
+- Share important notices
+- Update examination schedules
+- Post classroom events
+
+Students can
+
+- Read all notices
+- View posting date
+- See notice author
+
+---
+
+## 📝 Assignments
+
+- Create assignments
+- Track Pending / Completed status
+- Delete assignments
+- Responsive assignment cards
+
+---
+
+## 🎓 Classroom
+
+### Classroom Management
+
+- Create Classroom
+- Join Classroom
+- Unique Join Code
+- Member List
+
+### Attendance
+
+- Generate attendance sheet
+- Present / Absent toggle
+- Export attendance as PDF
+
+### Live Chat
+
+- Classroom messaging
+- Auto-refresh messages
+- Chat history stored locally
+
+### Video Preview
+
+- Camera & microphone access
+- Local video preview using getUserMedia
+- Start / Stop controls
+
+---
+
+## 🔔 Notifications
+
+- Animated in-app toast notifications
+- Browser notification support
+- Chat message alerts
+- Smooth notification animations
+
+---
+
+## ⚙️ Settings
+
+- Update profile
+- Change role
+- Theme preference
+- Reset application data
+
+---
+
+## 🎨 Premium UI
+
+- Modern Glassmorphism cards
+- Responsive dashboard
+- Dark / Light mode
+- Beautiful sidebar
+- Smooth animations
+- Professional typography
+- Mobile-friendly layout
+
+---
+
+# 🛠️ Technology Stack
+
+| Technology | Usage |
+|------------|-------|
+| HTML5 | Structure |
+| CSS3 | Styling & Responsive Design |
+| JavaScript (ES6) | Application Logic |
+| localStorage | Data Persistence |
+| jsPDF | Attendance PDF Export |
+| Notifications API | Browser Notifications |
+| WebRTC (getUserMedia) | Camera Preview |
+| Google Fonts | DM Sans & DM Mono |
+
+---
+
+# 📂 Project Structure
 
 ```
 EduConnect/
-├── index.html          # Login (role select: Student / Teacher)
-├── dashboard.html       # Landing page after login, quick links to every section
-├── doubts.html           # Doubts board
-├── notes.html             # Notes — add, edit (modal), delete
-├── assignments.html        # Assignments — add, toggle done, delete
-├── classroom.html           # Create/join class, attendance, chat, live video
-├── settings.html              # Profile settings + clear all data
-├── script.js                   # All app logic (~520 lines)
-├── style.css                    # Complete shared design system
-└── README.md                     # This file
+│
+├── index.html
+├── dashboard.html
+├── doubts.html
+├── notes.html
+├── assignments.html
+├── classroom.html
+├── notice.html
+├── settings.html
+│
+├── style.css
+├── script.js
+│
+└── README.md
 ```
-
-> **No build tools. No npm. No backend.** Open `index.html` in a browser and it works immediately.
 
 ---
 
-## ⚙️ How to Run
+# 🚀 How to Run
 
-### Option 1 — Open directly
+## Option 1
+
+Open
+
 ```
-Double-click index.html   →   Sign in, then navigate the app
+index.html
 ```
 
-### Option 2 — Live Server (recommended for camera/mic access)
+in your browser.
+
+---
+
+## Option 2 (Recommended)
+
+Using VS Code
+
+```
+Right Click
+
+↓
+
+Open with Live Server
+```
+
+or
+
 ```bash
-# VS Code extension
-Install "Live Server" → Right-click index.html → "Open with Live Server"
-
-# Or with Python
 python -m http.server 8080
-# Then visit http://localhost:8080
 ```
-> Camera/microphone access via `getUserMedia` requires `http://` or `https://` — most browsers block it on the `file://` protocol.
+
+Visit
+
+```
+http://localhost:8080
+```
 
 ---
 
-## 🗂️ Data Storage
+# 💾 Data Storage
 
-All data lives in **localStorage**, scoped to whichever browser/device you use:
+EduConnect stores data using **localStorage**.
 
-| Key | Contents |
-|---|---|
-| `user`, `role` | Current signed-in identity |
-| `theme` | `dark` or `light` |
-| `doubts` | Array of posted doubts |
-| `notes` | Array of notes |
-| `assignments` | Array of assignments with done/pending status |
-| `classCode`, `members` | Active class and its member list |
-| `attendance` | Generated attendance sheet |
-| `chat` | Classroom chat messages |
+| Storage Key | Description |
+|-------------|-------------|
+| user | Username |
+| role | Student / Teacher |
+| theme | Light / Dark |
+| doubts | Doubts |
+| notes | Notes |
+| assignments | Assignment Data |
+| notices | Notice Board |
+| classCode | Classroom Code |
+| members | Classroom Members |
+| attendance | Attendance |
+| chat | Chat Messages |
 
-**No data leaves your device.** This is a frontend-only demo — for a production deployment, replace localStorage with a real backend (Firebase, Supabase, or a Node.js/Express API with a database) so data syncs across users and devices.
-
----
-
-## 🔮 Possible Extensions
-
-- 🔐 Real authentication with passwords and per-user accounts
-- ☁️ Backend sync (Firebase/Supabase) so classes work across multiple devices
-- 📡 Real peer-to-peer video (WebRTC signaling) instead of a local-only preview
-- 🔔 Push notifications for new doubts or assignment deadlines
-- 📊 Teacher analytics — assignment completion rates, attendance trends
+No external database is required.
 
 ---
 
-## 👨‍💻 Author
+# 📱 Responsive Design
 
-**Sonu H N**
-Passionate about web development and building tools that make learning easier.
+✔ Desktop
+
+✔ Laptop
+
+✔ Tablet
+
+✔ Mobile
 
 ---
 
-## 📜 License
+# 🔒 Security
 
-This project is open-source under the MIT License.
+Current Version
+
+- Frontend only
+- No passwords
+- No backend
+- Browser-based storage
+
+Production Upgrade Ideas
+
+- Firebase Authentication
+- Cloud Firestore
+- Role-based Authorization
+- Encrypted Storage
+
+---
+
+# 🔮 Future Enhancements
+
+- ✅ Firebase Backend
+- ✅ Real-Time Chat
+- ✅ Multi-user Video Calling
+- ✅ Assignment Submission
+- ✅ Quiz Module
+- ✅ Student Progress Analytics
+- ✅ Timetable Management
+- ✅ Calendar Integration
+- ✅ AI Study Assistant
+- ✅ Email Notifications
+- ✅ Push Notifications
+- ✅ File Upload System
+
+---
+
+# 📸 Screenshots
+
+Add screenshots here after completing the project.
+
+```
+Login Page
+
+Dashboard
+
+Notice Board
+
+Assignments
+
+Classroom
+
+Chat
+
+Video Preview
+
+Dark Mode
+```
+
+---
+
+# 👨‍💻 Author
+
+**Suhas H N**
+
+**B.E. Electronics & Communication Engineering**
+
+Passionate about Full Stack Web Development, UI Design, and Educational Technology.
+
+GitHub:
+```
+https://github.com/Sonu-H-N
+```
+
+---
+
+# ⭐ Support
+
+If you found this project useful,
+
+⭐ Star this repository
+
+🍴 Fork it
+
+📢 Share it with others
+
+---
+
+# 📜 License
+
+This project is licensed under the **MIT License**.
