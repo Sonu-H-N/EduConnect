@@ -1,41 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notice Board | EduConnect</title>
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduConnect — Notice Board</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <div class="layout">
 
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <h2>EduConnect</h2>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-icon">🎓</div>
+      <span>EduConnect</span>
+    </div>
 
-        <a href="dashboard.html">Dashboard</a>
-        <a href="notes.html">Notes</a>
-        <a href="assignments.html">Assignments</a>
-        <a href="classroom.html">Classroom</a>
-        <a href="notice.html" class="active">Notice Board</a>
+    <div class="sidebar-section">Menu</div>
+    <nav>
+      <a href="dashboard.html"><span class="nav-icon">🏠</span> Dashboard</a>
+      <a href="doubts.html"><span class="nav-icon">💬</span> Doubts</a>
+      <a href="notes.html"><span class="nav-icon">📄</span> Notes</a>
+      <a href="assignments.html"><span class="nav-icon">📌</span> Assignments</a>
+      <a href="classroom.html"><span class="nav-icon">🎓</span> Classroom</a>
+      <a href="notice.html" class="active"><span class="nav-icon">📢</span> Notice Board</a>
+      <a href="settings.html"><span class="nav-icon">⚙️</span> Settings</a>
+    </nav>
 
-        <button onclick="logout()">Logout</button>
-    </aside>
-<a href="notice.html">📌 Notice Board</a>
-    <!-- Main -->
-    <main class="content">
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="avatar" id="sidebarAvatar">U</div>
+        <div class="user-info">
+          <div class="name" id="sidebarName">User</div>
+          <div class="role" id="sidebarRole">student</div>
+        </div>
+      </div>
+      <button class="btn-logout" onclick="logout()">🚪 Logout</button>
+    </div>
+  </aside>
 
-        <h1>📌 Notice Board</h1>
+  <!-- MAIN CONTENT -->
+  <main class="content">
 
-        <div id="teacherPanel"></div>
+    <div class="page-header">
+      <h1>📢 Notice Board</h1>
+      <p class="sub">Announcements and updates from your teachers</p>
+    </div>
 
-        <div id="noticeList"></div>
+    <div id="teacherPanel"></div>
 
-    </main>
+    <div id="noticeList"></div>
+
+  </main>
 
 </div>
+
+<!-- THEME TOGGLE -->
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</button>
 
 <script src="script.js"></script>
 
