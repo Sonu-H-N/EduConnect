@@ -1,396 +1,210 @@
 # 🎓 EduConnect
 
-<div align="center">
-
-<img src="assets/logo.png" width="120"/>
-
-# EduConnect
-
-### Modern Student–Teacher Collaboration Platform
-
-A feature-rich Learning Management System (LMS) built with **HTML5, CSS3, and Vanilla JavaScript**, designed to simplify communication, classroom collaboration, assignment management, attendance tracking, and interactive learning.
-
----
+> **A modern student–teacher interaction platform** built with **HTML, CSS, and Vanilla JavaScript** that streamlines classroom communication through notes sharing, assignments, announcements, attendance, classroom collaboration, live chat, and video preview.
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Responsive](https://img.shields.io/badge/Responsive-Yes-success?style=for-the-badge)
-![PWA Ready](https://img.shields.io/badge/PWA-Ready-purple?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
-
-</div>
+![MIT License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 
 ---
 
-# 📚 Table of Contents
+# 📖 Overview
 
-- Overview
-- Demo
-- Features
-- Screenshots
-- Technology Stack
-- Project Structure
-- Installation
-- Usage
-- Modules
-- Storage
-- Browser Support
-- Performance
-- Security
-- Future Roadmap
-- Contributing
-- Author
-- License
+EduConnect is a responsive web application designed for educational institutions to improve communication between **students and teachers**.
+
+The platform simulates a real Learning Management System (LMS) by combining classroom management, note sharing, assignment tracking, announcements, attendance, live chat, notifications, and video support into one modern interface.
+
+It is ideal as a **college mini project**, **final-year project**, or **portfolio project**.
 
 ---
 
-# 🌟 Overview
+# ✨ Features
 
-EduConnect is a **modern Learning Management System (LMS)** that enables seamless interaction between teachers and students through an intuitive web interface.
+## 🔐 Authentication
 
-The application combines classroom collaboration, assignment management, attendance tracking, live messaging, announcements, note sharing, and media support into one unified educational platform.
-
-Whether you're building a **college project**, **portfolio application**, or a **real-world LMS prototype**, EduConnect provides an excellent foundation.
-
----
-
-# 🚀 Demo
-
-### Login
-
-```
-Student Login
-Teacher Login
-```
-
-### Dashboard
-
-```
-Personal Dashboard
-Analytics Cards
-Navigation
-```
-
-### Classroom
-
-```
-Join
-Create
-Chat
-Attendance
-Video Preview
-```
+- Role-based Login (Student / Teacher)
+- Session persistence using localStorage
+- Protected pages
+- Dynamic user profile in sidebar
 
 ---
 
-# ✨ Core Features
+## 📊 Dashboard
 
-| Module | Features |
-|---------|----------|
-| Authentication | Student / Teacher Login |
-| Dashboard | Analytics Cards, Quick Navigation |
-| Notes | Create, Edit, Delete, Search |
-| Assignments | CRUD Operations, Status Tracking |
-| Doubts | Interactive Discussion Board |
-| Notice Board | Teacher Announcements |
-| Classroom | Join Code, Members |
-| Attendance | Present / Absent, PDF Export |
-| Chat | Live Local Messaging |
-| Video | Camera Preview |
-| Notifications | Toast + Browser Notification |
-| Theme | Dark / Light Mode |
-| Settings | Profile, Role, Reset |
+- Quick navigation cards
+- Personalized welcome section
+- Responsive layout
+- Modern sidebar navigation
 
 ---
 
-# 🎯 Key Highlights
+## 💬 Doubts Board
 
-✅ Beautiful Glassmorphism UI
-
-✅ Fully Responsive
-
-✅ Mobile Friendly
-
-✅ Dark / Light Theme
-
-✅ Animated Interface
-
-✅ Sidebar Navigation
-
-✅ Local Data Storage
-
-✅ PDF Export
-
-✅ Browser Notifications
-
-✅ Camera Integration
-
-✅ Offline Ready Architecture
-
-✅ Easy to Extend
+- Post doubts instantly
+- View classroom discussions
+- Delete doubts
+- Stored locally
 
 ---
 
-# 🔐 Authentication
+## 📄 Notes Management
 
-- Student Login
-- Teacher Login
-- Session Persistence
-- Dynamic Sidebar
-- Profile Information
-- Role Switching
-
----
-
-# 📊 Dashboard
-
-Features include
-
-- Welcome Card
-- Quick Statistics
-- Navigation Cards
-- Responsive Layout
-- Animated Widgets
-- User Profile Summary
+- Add notes
+- Edit notes
+- Delete notes
+- Timestamp for every note
+- Modal-based editing
 
 ---
 
-# 📄 Notes Management
+## 📌 Notice Board
 
 Teachers can
 
-- Add Notes
-- Edit Notes
-- Delete Notes
+- Publish announcements
+- Share important notices
+- Update examination schedules
+- Post classroom events
 
 Students can
 
-- Read Notes
-- Search Notes
-- View Upload Date
+- Read all notices
+- View posting date
+- See notice author
 
 ---
 
-# 💬 Doubts Board
+## 📝 Assignments
 
-- Ask Questions
-- Classroom Discussions
-- Delete Posts
-- Instant Updates
-- Timestamp Support
-
----
-
-# 📝 Assignment Management
-
-- Create Assignment
-- Edit Assignment
-- Delete Assignment
-- Pending Status
-- Completed Status
-- Due Date
-- Progress Tracking
+- Create assignments
+- Track Pending / Completed status
+- Delete assignments
+- Responsive assignment cards
 
 ---
 
-# 📢 Notice Board
+## 🎓 Classroom
 
-Teachers can publish
+### Classroom Management
 
-- Announcements
-- Exam Schedule
-- Classroom Events
-- Circulars
-- Important Updates
-
-Students receive
-
-- Instant Notifications
-- Chronological Feed
-- Author Details
-- Posting Time
-
----
-
-# 🏫 Classroom
-
-## Classroom Management
-
-- Create Class
-- Join Using Code
+- Create Classroom
+- Join Classroom
+- Unique Join Code
 - Member List
-- Class Information
-- Classroom Statistics
+
+### Attendance
+
+- Generate attendance sheet
+- Present / Absent toggle
+- Export attendance as PDF
+
+### Live Chat
+
+- Classroom messaging
+- Auto-refresh messages
+- Chat history stored locally
+
+### Video Preview
+
+- Camera & microphone access
+- Local video preview using getUserMedia
+- Start / Stop controls
 
 ---
 
-## Attendance
+## 🔔 Notifications
 
-- Attendance Sheet
-- Present / Absent Toggle
-- Attendance Percentage
-- PDF Export
-
----
-
-## Live Chat
-
-- Real-time Interface
-- Message History
-- Auto Refresh
-- Username Display
-- Timestamp
+- Animated in-app toast notifications
+- Browser notification support
+- Chat message alerts
+- Smooth notification animations
 
 ---
 
-## Video Preview
+## ⚙️ Settings
 
-- Camera Access
-- Microphone Access
-- Local Preview
-- Start / Stop Video
-- Media Permission Handling
-
----
-
-# 🔔 Notifications
-
-Supports
-
-- Browser Notifications
-- Toast Alerts
-- Chat Notifications
-- Assignment Alerts
-- Success Messages
-- Error Messages
+- Update profile
+- Change role
+- Theme preference
+- Reset application data
 
 ---
 
-# ⚙️ Settings
+## 🎨 Premium UI
 
-- Edit Profile
-- Change Theme
-- Change Role
-- Reset Data
-- Clear Storage
-
----
-
-# 🎨 User Interface
-
-Modern design includes
-
-- Glassmorphism
-- Smooth Animations
-- Hover Effects
-- Soft Shadows
-- Rounded Components
-- Professional Typography
-- Responsive Sidebar
-- Animated Buttons
-- Loading Effects
+- Modern Glassmorphism cards
+- Responsive dashboard
+- Dark / Light mode
+- Beautiful sidebar
+- Smooth animations
+- Professional typography
+- Mobile-friendly layout
 
 ---
 
-# 📸 Screenshots
+# 🛠️ Technology Stack
 
-```
-📷 Login
-
-📷 Dashboard
-
-📷 Notes
-
-📷 Doubts
-
-📷 Assignments
-
-📷 Notice Board
-
-📷 Classroom
-
-📷 Attendance
-
-📷 Chat
-
-📷 Video Preview
-
-📷 Settings
-
-📷 Mobile View
-```
-
----
-
-# 🛠 Technology Stack
-
-| Technology | Purpose |
-|------------|---------|
-| HTML5 | Semantic Structure |
-| CSS3 | Styling |
-| JavaScript ES6 | Business Logic |
-| localStorage | Persistent Storage |
-| jsPDF | PDF Export |
-| Notifications API | Browser Alerts |
-| WebRTC | Camera Access |
-| Google Fonts | Typography |
+| Technology | Usage |
+|------------|-------|
+| HTML5 | Structure |
+| CSS3 | Styling & Responsive Design |
+| JavaScript (ES6) | Application Logic |
+| localStorage | Data Persistence |
+| jsPDF | Attendance PDF Export |
+| Notifications API | Browser Notifications |
+| WebRTC (getUserMedia) | Camera Preview |
+| Google Fonts | DM Sans & DM Mono |
 
 ---
 
 # 📂 Project Structure
 
 ```
-EduConnect
-│
-├── assets/
-│   ├── images/
-│   ├── icons/
-│   └── logo.png
-│
-├── css/
-│   └── style.css
-│
-├── js/
-│   ├── auth.js
-│   ├── dashboard.js
-│   ├── classroom.js
-│   ├── notes.js
-│   ├── assignments.js
-│   ├── notifications.js
-│   └── utils.js
-│
-├── pages/
-│   ├── dashboard.html
-│   ├── classroom.html
-│   ├── notes.html
-│   ├── notice.html
-│   ├── doubts.html
-│   ├── assignments.html
-│   └── settings.html
+EduConnect/
 │
 ├── index.html
-├── README.md
-└── LICENSE
+├── dashboard.html
+├── doubts.html
+├── notes.html
+├── assignments.html
+├── classroom.html
+├── notice.html
+├── settings.html
+│
+├── style.css
+├── script.js
+│
+└── README.md
 ```
 
 ---
 
-# ⚡ Installation
+# 🚀 How to Run
 
-Clone the repository
+## Option 1
 
-```bash
-git clone https://github.com/Sonu-H-N/EduConnect.git
+Open
+
+```
+index.html
 ```
 
-Go into the project
+in your browser.
 
-```bash
-cd EduConnect
+---
+
+## Option 2 (Recommended)
+
+Using VS Code
+
 ```
+Right Click
 
-Open using Live Server
+↓
+
+Open with Live Server
+```
 
 or
 
@@ -406,52 +220,37 @@ http://localhost:8080
 
 ---
 
-# 💾 Local Storage
+# 💾 Data Storage
 
-| Key | Purpose |
-|------|----------|
+EduConnect stores data using **localStorage**.
+
+| Storage Key | Description |
+|-------------|-------------|
 | user | Username |
-| role | User Role |
-| theme | UI Theme |
-| doubts | Discussion Posts |
+| role | Student / Teacher |
+| theme | Light / Dark |
+| doubts | Doubts |
 | notes | Notes |
-| assignments | Assignments |
+| assignments | Assignment Data |
 | notices | Notice Board |
+| classCode | Classroom Code |
+| members | Classroom Members |
 | attendance | Attendance |
-| classroom | Classroom Info |
-| members | Member List |
 | chat | Chat Messages |
 
----
-
-# 🌐 Browser Support
-
-| Browser | Supported |
-|-----------|-----------|
-| Chrome | ✅ |
-| Edge | ✅ |
-| Firefox | ✅ |
-| Brave | ✅ |
-| Opera | ✅ |
-| Safari | ✅ |
+No external database is required.
 
 ---
 
-# 🚀 Performance
+# 📱 Responsive Design
 
-✔ Responsive UI
+✔ Desktop
 
-✔ Fast Loading
+✔ Laptop
 
-✔ Lightweight
+✔ Tablet
 
-✔ No Framework Dependencies
-
-✔ Modular Codebase
-
-✔ Optimized Rendering
-
-✔ Smooth Animations
+✔ Mobile
 
 ---
 
@@ -459,98 +258,104 @@ http://localhost:8080
 
 Current Version
 
-- Client-side Authentication
-- Browser Storage
-- Role-based UI
+- Frontend only
+- No passwords
+- No backend
+- Browser-based storage
 
-Recommended Production Features
+Production Upgrade Ideas
 
 - Firebase Authentication
-- Firestore Database
-- JWT Authentication
-- Cloud Storage
-- HTTPS
-- Encrypted Sessions
+- Cloud Firestore
+- Role-based Authorization
+- Encrypted Storage
 
 ---
 
-# 🗺 Roadmap
+# 🔮 Future Enhancements
 
-- [ ] Firebase Integration
-- [ ] Assignment Submission
-- [ ] Quiz Module
-- [ ] AI Study Assistant
-- [ ] Calendar
-- [ ] Timetable
-- [ ] Parent Portal
-- [ ] Grades Module
-- [ ] Multi-Class Support
-- [ ] Video Conferencing
-- [ ] Cloud Sync
-- [ ] Email Notifications
-- [ ] Push Notifications
-- [ ] Progressive Web App
-- [ ] Offline Synchronization
+- ✅ Firebase Backend
+- ✅ Real-Time Chat
+- ✅ Multi-user Video Calling
+- ✅ Assignment Submission
+- ✅ Quiz Module
+- ✅ Student Progress Analytics
+- ✅ Timetable Management
+- ✅ Calendar Integration
+- ✅ AI Study Assistant
+- ✅ Email Notifications
+- ✅ Push Notifications
+- ✅ File Upload System
 
 ---
 
-# 🤝 Contributing
+# 📸 Screenshots
 
-Contributions are welcome!
-
-1. Fork the repository
-2. Create a feature branch
+Add screenshots here after completing the project.
 
 ```
-git checkout -b feature/new-feature
+Login Page
+
+Dashboard
+
+Notice Board
+
+Assignments
+
+Classroom
+
+Chat
+
+Video Preview
+
+Dark Mode
 ```
-
-3. Commit your changes
-
-```
-git commit -m "feat: add new feature"
-```
-
-4. Push your branch
-
-```
-git push origin feature/new-feature
-```
-
-5. Open a Pull Request
-
----
-
-# 📄 License
-
-Licensed under the **MIT License**.
 
 ---
 
 # 👨‍💻 Author
 
-## Suhas H N
+**Suhas H N**
 
 **B.E. Electronics & Communication Engineering**
 
-💻 Full Stack Web Developer
+Passionate about Full Stack Web Development, UI Design, and Educational Technology.
 
-🎨 UI/UX Enthusiast
-
-🚀 Passionate about Educational Technology
-
-GitHub
-
+GitHub:
 ```
 https://github.com/Sonu-H-N
 ```
 
 ---
 
-<div align="center">
+# ⭐ Support
 
-### ⭐ If you like this project, consider giving it a Star!
+If you found this project useful,
 
-Made with ❤️ by **Suhas H N**
+⭐ Star this repository
 
-</div>
+🍴 Fork it
+
+📢 Share it with others
+
+---
+
+# 📜 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+# 🩹 Changelog
+
+**Upgrade pass**
+
+- **Critical fix:** a stray `<a>` tag had been pasted into the middle of `script.js`, which caused a JavaScript syntax error and broke the *entire* app (login, notes, chat, everything) — removed.
+- Same stray tag was also corrupting `style.css` and littered across every `.html` file in invalid positions (inside `<head>`, floating between `<head>` and `<body>`, after `</html>`) — removed everywhere.
+- Notice Board is now wired into the sidebar navigation on every page (previously only reachable if you knew the URL) and added as a dashboard card.
+- Rebuilt `notice.html` to use the same sidebar/theme-toggle/typography as the rest of the app — it was previously an unstyled orphan page.
+- Fixed a bug where the "Create Notice" panel never appeared for teachers (`role === "Teacher"` was compared against a stored lowercase `"teacher"`).
+- Notice titles/content/author are now HTML-escaped before rendering (previously the only page in the app vulnerable to stored-markup injection).
+- Replaced a blocking `alert()` in the notice flow with the app's existing toast notification for consistency.
+- Removed a stray editor config file (`{} settings.json`) that shouldn't have been committed.
+- Notice cards now use the app's CSS variables so they respect dark mode instead of a hardcoded white background.
