@@ -592,6 +592,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadMembers();
   loadAttendance();
   loadMessages();
+  loadNoticeBoard();
 
   requestNotificationPermission();
 
@@ -613,30 +614,33 @@ function loadNoticeBoard(){
 
     let notices=JSON.parse(localStorage.getItem("notices")) || [];
 
-    const role=localStorage.getItem("role");
+    const role=(localStorage.getItem("role") || "").toLowerCase();
 
-    if(role==="Teacher"){
+    if(role==="teacher" && panel){
 
         panel.innerHTML=`
-            <div class="card">
-
+            <div class="panel">
                 <h2>Create Notice</h2>
-
-                <input id="noticeTitle" placeholder="Notice Title">
-
-                <textarea id="noticeContent"
-                placeholder="Write notice..."></textarea>
-
-                <button onclick="addNotice()">
-                Publish Notice
-                </button>
-
+                <div class="input-row" style="margin-bottom:10px">
+                  <input id="noticeTitle" class="input-field" placeholder="Notice title">
+                </div>
+                <div class="input-row">
+                  <textarea id="noticeContent" class="input-field" placeholder="Write notice..."></textarea>
+                  <button class="btn btn-primary" onclick="addNotice()" style="align-self:flex-end">Publish Notice</button>
+                </div>
             </div>
         `;
 
+    } else if (panel) {
+        panel.innerHTML = "";
     }
 
     list.innerHTML="";
+
+    if (notices.length === 0) {
+        list.innerHTML = '<div class="empty-state">No notices posted yet.</div>';
+        return;
+    }
 
     notices.reverse().forEach((n,index)=>{
 
@@ -644,22 +648,22 @@ function loadNoticeBoard(){
 
         <div class="notice-card">
 
-            <h3>${n.title}</h3>
+            <h3>${escapeHtml(n.title)}</h3>
 
-            <p>${n.content}</p>
+            <p>${escapeHtml(n.content)}</p>
 
             <div class="notice-date">
 
-                Posted by ${n.author}
+                Posted by ${escapeHtml(n.author || "Unknown")}
 
                 <br>
 
-                ${n.date}
+                ${escapeHtml(n.date)}
 
             </div>
 
             ${
-                role==="Teacher"
+                role==="teacher"
                 ?
                 `<div class="notice-actions">
                     <button onclick="deleteNotice(${notices.length-1-index})">
@@ -685,7 +689,7 @@ function addNotice(){
     const content=document.getElementById("noticeContent").value.trim();
 
     if(title==="" || content===""){
-        alert("Please fill all fields");
+        showNotification("Please fill all fields");
         return;
     }
 
@@ -710,7 +714,7 @@ function addNotice(){
     loadNoticeBoard();
 
 }
-<a href="notice.html">📌 Notice Board</a>
+
 function deleteNotice(index){
 
     let notices=JSON.parse(localStorage.getItem("notices")) || [];
@@ -724,4 +728,3 @@ function deleteNotice(index){
     loadNoticeBoard();
 
 }
-loadNoticeBoard();
