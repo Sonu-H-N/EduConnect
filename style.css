@@ -803,21 +803,22 @@ a:focus-visible{
   }
 }
 .notice-card{
-    background:#fff;
+    background:var(--paper);
     padding:20px;
-    border-radius:15px;
+    border-radius:var(--radius-lg);
     margin-bottom:20px;
-    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    border:1px solid var(--border);
+    box-shadow:0 5px 15px rgba(0,0,0,.06);
 }
 
 .notice-card h3{
-    color:#2563eb;
+    color:var(--accent);
     margin-bottom:8px;
 }
-<a href="notice.html">📌 Notice Board</a>
+
 .notice-date{
     font-size:13px;
-    color:#777;
+    color:var(--text-3);
     margin-top:10px;
 }
 
@@ -827,13 +828,4 @@ a:focus-visible{
 
 .notice-actions button{
     margin-right:10px;
-}
-
-textarea{
-    width:100%;
-    height:120px;
-    padding:10px;
-    border-radius:10px;
-    resize:none;
-    margin-bottom:10px;
 }
