@@ -1,25 +1,111 @@
 /* ==========================================================
-   EduConnect — App Logic
-   Vanilla JS, localStorage-backed, role-based (student/teacher)
-   ========================================================== */
+    EduConnect — App Logic
+    Vanilla JS, localStorage-backed, role-based (student/teacher)
+    ========================================================== */
 
-/* ---------- AUTH ---------- */
-function getUser() {
-  return localStorage.getItem("user") || "";
-}
+const VALID_ROLES = new Set(["student", "teacher"]);
 
-function getRole() {
-  return localStorage.getItem("role") || "student";
-}
+function safeJsonGet(key, fallback) {
+  try {
+    const raw = localStorage.getItem(key);
+    if (raw === null || raw === undefined || raw === "") {
+      return fallback;
+    }
 
-function requireAuth() {
-  if (!localStorage.getItem("user")) {
-    window.location.href = "index.html";
+    const parsed = JSON.parse(raw);
+    return parsed === null ? fallback : parsed;
+  } catch (error) {
+    console.warn(`EduConnect: invalid JSON in ${key}. Resetting to fallback.`, error);
+    localStorage.removeItem(key);
+    return fallback;
   }
 }
 
+function safeJsonSet(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+    return true;
+  } catch (error) {
+    console.warn(`EduConnect: could not write ${key} to localStorage.`, error);
+    return false;
+  }
+}
+
+function normalizeRole(rawRole) {
+  const role = String(rawRole || "student").trim().toLowerCase();
+  return VALID_ROLES.has(role) ? role : "student";
+}
+
+function normalizeUser(rawUser) {
+  return String(rawUser || "").trim();
+}
+
+function setSession(user, role) {
+  const safeUser = normalizeUser(user);
+  const safeRole = normalizeRole(role);
+
+  if (!safeUser) {
+    return false;
+  }
+
+  try {
+    localStorage.setItem("user", safeUser);
+    localStorage.setItem("role", safeRole);
+    localStorage.setItem("session", JSON.stringify({ user: safeUser, role: safeRole }));
+    return true;
+  } catch (error) {
+    console.warn("EduConnect: unable to create session.", error);
+    return false;
+  }
+}
+
+/* ---------- AUTH ---------- */
+function getUser() {
+  try {
+    const cachedSession = JSON.parse(localStorage.getItem("session") || "{}");
+    const storedUser = localStorage.getItem("user") || "";
+    const user = normalizeUser(cachedSession.user || storedUser);
+    return user;
+  } catch (error) {
+    console.warn("EduConnect: invalid session payload.", error);
+    localStorage.removeItem("session");
+    return normalizeUser(localStorage.getItem("user"));
+  }
+}
+
+function getRole() {
+  try {
+    const cachedSession = JSON.parse(localStorage.getItem("session") || "{}");
+    const storedRole = localStorage.getItem("role") || "student";
+    return normalizeRole(cachedSession.role || storedRole);
+  } catch (error) {
+    console.warn("EduConnect: invalid role payload.", error);
+    localStorage.removeItem("session");
+    return normalizeRole(localStorage.getItem("role"));
+  }
+}
+
+function requireAuth() {
+  const user = getUser();
+  const role = getRole();
+
+  if (!user || !VALID_ROLES.has(role)) {
+    stopChatPolling();
+    const theme = localStorage.getItem("theme");
+    localStorage.clear();
+    if (theme) localStorage.setItem("theme", theme);
+    window.location.href = "index.html";
+    return false;
+  }
+
+  return true;
+}
+
 function logout() {
+  stopChatPolling();
+  const theme = localStorage.getItem("theme");
   localStorage.clear();
+  if (theme) localStorage.setItem("theme", theme);
   window.location.href = "index.html";
 }
 
@@ -39,8 +125,10 @@ function initLogin() {
       return;
     }
 
-    localStorage.setItem("user", username);
-    localStorage.setItem("role", role);
+    if (!setSession(username, role)) {
+      showNotification("Session could not be created");
+      return;
+    }
 
     window.location.href = "dashboard.html";
   });
@@ -97,9 +185,9 @@ function addDoubt() {
     return;
   }
 
-  let doubts = JSON.parse(localStorage.getItem("doubts") || "[]");
+  let doubts = safeJsonGet("doubts", []);
   doubts.unshift({ text, user: getUser(), time: Date.now() });
-  localStorage.setItem("doubts", JSON.stringify(doubts));
+  safeJsonSet("doubts", doubts);
 
   input.value = "";
   loadDoubts();
@@ -110,7 +198,7 @@ function loadDoubts() {
   const list = document.getElementById("doubtList");
   if (!list) return;
 
-  let doubts = JSON.parse(localStorage.getItem("doubts") || "[]");
+  let doubts = safeJsonGet("doubts", []);
   list.innerHTML = "";
 
   if (doubts.length === 0) {
@@ -129,9 +217,9 @@ function loadDoubts() {
 }
 
 function deleteDoubt(index) {
-  let doubts = JSON.parse(localStorage.getItem("doubts") || "[]");
+  let doubts = safeJsonGet("doubts", []);
   doubts.splice(index, 1);
-  localStorage.setItem("doubts", JSON.stringify(doubts));
+  safeJsonSet("doubts", doubts);
   loadDoubts();
 }
 
@@ -147,9 +235,9 @@ function addNote() {
     return;
   }
 
-  let notes = JSON.parse(localStorage.getItem("notes") || "[]");
+  let notes = safeJsonGet("notes", []);
   notes.unshift({ id: Date.now(), title, content, updated: Date.now() });
-  localStorage.setItem("notes", JSON.stringify(notes));
+  safeJsonSet("notes", notes);
 
   titleEl.value = "";
   contentEl.value = "";
@@ -162,7 +250,7 @@ function loadNotes() {
   const container = document.getElementById("notesList");
   if (!container) return;
 
-  let notes = JSON.parse(localStorage.getItem("notes") || "[]");
+  let notes = safeJsonGet("notes", []);
   container.innerHTML = "";
 
   if (notes.length === 0) {
@@ -187,15 +275,15 @@ function loadNotes() {
 }
 
 function deleteNote(id) {
-  let notes = JSON.parse(localStorage.getItem("notes") || "[]");
+  let notes = safeJsonGet("notes", []);
   notes = notes.filter(n => n.id !== id);
-  localStorage.setItem("notes", JSON.stringify(notes));
+  safeJsonSet("notes", notes);
   loadNotes();
   showNotification("Note deleted");
 }
 
 function openEditModal(id) {
-  let notes = JSON.parse(localStorage.getItem("notes") || "[]");
+  let notes = safeJsonGet("notes", []);
   const note = notes.find(n => n.id === id);
   if (!note) return;
 
@@ -219,13 +307,13 @@ function saveEditNote() {
     return;
   }
 
-  let notes = JSON.parse(localStorage.getItem("notes") || "[]");
+  let notes = safeJsonGet("notes", []);
   const note = notes.find(n => n.id === id);
   if (note) {
     note.title = title;
     note.content = content;
     note.updated = Date.now();
-    localStorage.setItem("notes", JSON.stringify(notes));
+    safeJsonSet("notes", notes);
   }
 
   closeEditModal();
@@ -245,9 +333,9 @@ function addAssignment() {
     return;
   }
 
-  let assignments = JSON.parse(localStorage.getItem("assignments") || "[]");
+  let assignments = safeJsonGet("assignments", []);
   assignments.unshift({ id: Date.now(), title, desc, done: false });
-  localStorage.setItem("assignments", JSON.stringify(assignments));
+  safeJsonSet("assignments", assignments);
 
   titleEl.value = "";
   descEl.value = "";
@@ -260,7 +348,7 @@ function loadAssignments() {
   const container = document.getElementById("assignmentList");
   if (!container) return;
 
-  let assignments = JSON.parse(localStorage.getItem("assignments") || "[]");
+  let assignments = safeJsonGet("assignments", []);
   container.innerHTML = "";
 
   if (assignments.length === 0) {
@@ -287,17 +375,17 @@ function loadAssignments() {
 }
 
 function toggleAssignment(id) {
-  let assignments = JSON.parse(localStorage.getItem("assignments") || "[]");
+  let assignments = safeJsonGet("assignments", []);
   const a = assignments.find(x => x.id === id);
   if (a) a.done = !a.done;
-  localStorage.setItem("assignments", JSON.stringify(assignments));
+  safeJsonSet("assignments", assignments);
   loadAssignments();
 }
 
 function deleteAssignment(id) {
-  let assignments = JSON.parse(localStorage.getItem("assignments") || "[]");
+  let assignments = safeJsonGet("assignments", []);
   assignments = assignments.filter(a => a.id !== id);
-  localStorage.setItem("assignments", JSON.stringify(assignments));
+  safeJsonSet("assignments", assignments);
   loadAssignments();
   showNotification("Assignment removed");
 }
@@ -331,12 +419,12 @@ function joinClass() {
     return;
   }
 
-  let members = JSON.parse(localStorage.getItem("members") || "[]");
+  let members = safeJsonGet("members", []);
   const user = getUser();
 
   if (!members.includes(user)) {
     members.push(user);
-    localStorage.setItem("members", JSON.stringify(members));
+    safeJsonSet("members", members);
   }
 
   inputEl.value = "";
@@ -348,7 +436,7 @@ function loadMembers() {
   const list = document.getElementById("memberList");
   if (!list) return;
 
-  let members = JSON.parse(localStorage.getItem("members") || "[]");
+  let members = safeJsonGet("members", []);
   list.innerHTML = "";
 
   if (members.length === 0) {
@@ -365,7 +453,7 @@ function loadMembers() {
 
 /* ---------- ATTENDANCE ---------- */
 function generateAttendance() {
-  let members = JSON.parse(localStorage.getItem("members") || "[]");
+  let members = safeJsonGet("members", []);
 
   if (members.length === 0) {
     showNotification("No members to mark attendance for");
@@ -373,19 +461,19 @@ function generateAttendance() {
   }
 
   let attendance = members.map(name => ({ name, status: "Present" }));
-  localStorage.setItem("attendance", JSON.stringify(attendance));
+  safeJsonSet("attendance", attendance);
   loadAttendance();
   showNotification("Attendance sheet generated");
 }
 
 function toggleAttendance(name) {
-  let attendance = JSON.parse(localStorage.getItem("attendance") || "[]");
+  let attendance = safeJsonGet("attendance", []);
   attendance.forEach(a => {
     if (a.name === name) {
       a.status = a.status === "Present" ? "Absent" : "Present";
     }
   });
-  localStorage.setItem("attendance", JSON.stringify(attendance));
+  safeJsonSet("attendance", attendance);
   loadAttendance();
 }
 
@@ -393,7 +481,7 @@ function loadAttendance() {
   const list = document.getElementById("attendanceList");
   if (!list) return;
 
-  let attendance = JSON.parse(localStorage.getItem("attendance") || "[]");
+  let attendance = safeJsonGet("attendance", []);
   list.innerHTML = "";
 
   if (attendance.length === 0) {
@@ -420,7 +508,7 @@ function exportPDF() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
 
-  let data = JSON.parse(localStorage.getItem("attendance") || "[]");
+  let data = safeJsonGet("attendance", []);
 
   if (data.length === 0) {
     showNotification("No attendance data to export");
@@ -468,14 +556,21 @@ function stopVideo() {
 /* ---------- CHAT ---------- */
 let chatPollInterval = null;
 
+function stopChatPolling() {
+  if (chatPollInterval) {
+    clearInterval(chatPollInterval);
+    chatPollInterval = null;
+  }
+}
+
 function sendMessage() {
   const input = document.getElementById("chatInput");
   const msg = input.value.trim();
   if (!msg) return;
 
-  let chats = JSON.parse(localStorage.getItem("chat") || "[]");
+  let chats = safeJsonGet("chat", []);
   chats.push({ user: getUser(), text: msg, time: Date.now() });
-  localStorage.setItem("chat", JSON.stringify(chats));
+  safeJsonSet("chat", chats);
 
   showNotification("Message sent");
   browserNotification(msg);
@@ -488,7 +583,7 @@ function loadMessages() {
   const box = document.getElementById("chatMessages");
   if (!box) return;
 
-  let chats = JSON.parse(localStorage.getItem("chat") || "[]");
+  let chats = safeJsonGet("chat", []);
   box.innerHTML = "";
 
   chats.forEach(c => {
@@ -505,15 +600,17 @@ function saveSettings() {
   const nameEl = document.getElementById("newName");
   const roleEl = document.getElementById("newRole");
   const name = nameEl.value.trim();
-  const role = roleEl.value;
+  const role = normalizeRole(roleEl.value);
 
   if (!name) {
     showNotification("Enter a name");
     return;
   }
 
-  localStorage.setItem("user", name);
-  localStorage.setItem("role", role);
+  if (!setSession(name, role)) {
+    showNotification("Invalid profile settings");
+    return;
+  }
 
   initSidebarUser();
   nameEl.value = "";
@@ -527,7 +624,6 @@ function clearData() {
 
   localStorage.clear();
 
-  // Preserve identity and theme — "clear data" wipes content, not the session
   if (user) localStorage.setItem("user", user);
   if (role) localStorage.setItem("role", role);
   if (theme) localStorage.setItem("theme", theme);
@@ -561,7 +657,7 @@ function browserNotification(text) {
 /* ---------- HELPERS ---------- */
 function escapeHtml(str) {
   const div = document.createElement("div");
-  div.textContent = str;
+  div.textContent = String(str ?? "");
   return div.innerHTML;
 }
 
@@ -578,7 +674,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initLogin();
   initTheme();
 
-  // Pages other than the login screen require an active session
   if (!document.getElementById("loginForm")) {
     requireAuth();
   }
@@ -596,135 +691,100 @@ document.addEventListener("DOMContentLoaded", () => {
 
   requestNotificationPermission();
 
-  // Poll chat for "live" updates within the same browser session
   if (document.getElementById("chatMessages")) {
     chatPollInterval = setInterval(loadMessages, 2000);
   }
+
+  window.addEventListener("beforeunload", stopChatPolling);
 });
+
 /* =============================
    NOTICE BOARD
 ============================= */
 
-function loadNoticeBoard(){
+function loadNoticeBoard() {
+  const panel = document.getElementById("teacherPanel");
+  const list = document.getElementById("noticeList");
 
-    const panel=document.getElementById("teacherPanel");
-    const list=document.getElementById("noticeList");
+  if (!list) return;
 
-    if(!list) return;
+  let notices = safeJsonGet("notices", []);
+  const role = getRole();
 
-    let notices=JSON.parse(localStorage.getItem("notices")) || [];
-
-    const role=(localStorage.getItem("role") || "").toLowerCase();
-
-    if(role==="teacher" && panel){
-
-        panel.innerHTML=`
-            <div class="panel">
-                <h2>Create Notice</h2>
-                <div class="input-row" style="margin-bottom:10px">
-                  <input id="noticeTitle" class="input-field" placeholder="Notice title">
-                </div>
-                <div class="input-row">
-                  <textarea id="noticeContent" class="input-field" placeholder="Write notice..."></textarea>
-                  <button class="btn btn-primary" onclick="addNotice()" style="align-self:flex-end">Publish Notice</button>
-                </div>
-            </div>
-        `;
-
-    } else if (panel) {
-        panel.innerHTML = "";
-    }
-
-    list.innerHTML="";
-
-    if (notices.length === 0) {
-        list.innerHTML = '<div class="empty-state">No notices posted yet.</div>';
-        return;
-    }
-
-    notices.reverse().forEach((n,index)=>{
-
-        list.innerHTML+=`
-
-        <div class="notice-card">
-
-            <h3>${escapeHtml(n.title)}</h3>
-
-            <p>${escapeHtml(n.content)}</p>
-
-            <div class="notice-date">
-
-                Posted by ${escapeHtml(n.author || "Unknown")}
-
-                <br>
-
-                ${escapeHtml(n.date)}
-
-            </div>
-
-            ${
-                role==="teacher"
-                ?
-                `<div class="notice-actions">
-                    <button onclick="deleteNotice(${notices.length-1-index})">
-                    Delete
-                    </button>
-                </div>`
-                :
-                ""
-            }
-
+  if (role === "teacher" && panel) {
+    panel.innerHTML = `
+      <div class="panel">
+        <h2>Create Notice</h2>
+        <div class="input-row" style="margin-bottom:10px">
+          <input id="noticeTitle" class="input-field" placeholder="Notice title">
         </div>
+        <div class="input-row">
+          <textarea id="noticeContent" class="input-field" placeholder="Write notice..."></textarea>
+          <button class="btn btn-primary" onclick="addNotice()" style="align-self:flex-end">Publish Notice</button>
+        </div>
+      </div>
+    `;
+  } else if (panel) {
+    panel.innerHTML = "";
+  }
 
-        `;
+  list.innerHTML = "";
 
-    });
+  if (notices.length === 0) {
+    list.innerHTML = '<div class="empty-state">No notices posted yet.</div>';
+    return;
+  }
 
+  [...notices].reverse().forEach((n, index) => {
+    const noticeId = n.id ?? index;
+    list.innerHTML += `
+      <div class="notice-card">
+        <h3>${escapeHtml(n.title)}</h3>
+        <p>${escapeHtml(n.content)}</p>
+        <div class="notice-date">
+          Posted by ${escapeHtml(n.author || "Unknown")}
+          <br>
+          ${escapeHtml(n.date)}
+        </div>
+        ${role === "teacher" ? `<div class="notice-actions"><button onclick="deleteNotice('${String(noticeId)}')">Delete</button></div>` : ""}
+      </div>
+    `;
+  });
 }
 
-function addNotice(){
+function addNotice() {
+  const title = document.getElementById("noticeTitle").value.trim();
+  const content = document.getElementById("noticeContent").value.trim();
 
-    const title=document.getElementById("noticeTitle").value.trim();
+  if (title === "" || content === "") {
+    showNotification("Please fill all fields");
+    return;
+  }
 
-    const content=document.getElementById("noticeContent").value.trim();
+  let notices = safeJsonGet("notices", []);
 
-    if(title==="" || content===""){
-        showNotification("Please fill all fields");
-        return;
-    }
+  notices.push({
+    id: Date.now() + Math.random(),
+    title,
+    content,
+    author: localStorage.getItem("user") || "Unknown",
+    date: new Date().toLocaleString()
+  });
 
-    let notices=JSON.parse(localStorage.getItem("notices")) || [];
-
-    notices.push({
-
-        title,
-
-        content,
-
-        author:localStorage.getItem("user"),
-
-        date:new Date().toLocaleString()
-
-    });
-
-    localStorage.setItem("notices",JSON.stringify(notices));
-
-    showNotification("📢 Notice Published");
-
-    loadNoticeBoard();
-
+  safeJsonSet("notices", notices);
+  showNotification("📢 Notice Published");
+  loadNoticeBoard();
 }
 
-function deleteNotice(index){
+function deleteNotice(id) {
+  let notices = safeJsonGet("notices", []);
 
-    let notices=JSON.parse(localStorage.getItem("notices")) || [];
+  const noticeIndex = notices.findIndex(n => String(n.id ?? "") === String(id));
 
-    notices.splice(index,1);
-
-    localStorage.setItem("notices",JSON.stringify(notices));
-
+  if (noticeIndex >= 0) {
+    notices.splice(noticeIndex, 1);
+    safeJsonSet("notices", notices);
     showNotification("Notice Deleted");
-
     loadNoticeBoard();
-
+  }
 }
