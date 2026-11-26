@@ -1,6 +1,6 @@
 # 🎓 EduConnect
 
-> **A modern student–teacher interaction platform** built with **HTML, CSS, and Vanilla JavaScript** that streamlines classroom communication through notes sharing, assignments, announcements, attendance, classroom collaboration, live chat, and video preview.
+> **A modern student–teacher interaction platform** built with **HTML, CSS, and Vanilla JavaScript** that streamlines classroom communication through notes sharing, assignments, announcements, attendance, live chat, notifications, and video previews.
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
@@ -13,7 +13,7 @@
 
 EduConnect is a responsive web application designed for educational institutions to improve communication between **students and teachers**.
 
-The platform simulates a real Learning Management System (LMS) by combining classroom management, note sharing, assignment tracking, announcements, attendance, live chat, notifications, and video support into one modern interface.
+The platform simulates a real Learning Management System (LMS) by combining classroom management, note sharing, assignment tracking, announcements, attendance, live chat, notifications, and video previews.
 
 It is ideal as a **college mini project**, **final-year project**, or **portfolio project**.
 
@@ -113,6 +113,14 @@ Students can
 
 ---
 
+## 🤖 Study Buddy Chatbot
+
+- Dashboard chatbot with quick prompts for assignments, notes, doubts, notices, and study tips
+- Uses the data saved in this browser to provide relevant study-task summaries
+- Saves chat history locally; no external AI service or API key is required
+
+---
+
 ## 🔔 Notifications
 
 - Animated in-app toast notifications
@@ -174,6 +182,8 @@ EduConnect/
 │
 ├── style.css
 ├── script.js
+├── chatbot.css
+├── chatbot.js
 │
 └── README.md
 ```
@@ -237,6 +247,7 @@ EduConnect stores data using **localStorage**.
 | members | Classroom Members |
 | attendance | Attendance |
 | chat | Chat Messages |
+| educonnectAssistantChat | Study Buddy conversation |
 
 No external database is required.
 
@@ -350,8 +361,8 @@ This project is licensed under the **MIT License**.
 
 **Upgrade pass**
 
-- **Critical fix:** a stray `<a>` tag had been pasted into the middle of `script.js`, which caused a JavaScript syntax error and broke the *entire* app (login, notes, chat, everything) — removed.
-- Same stray tag was also corrupting `style.css` and littered across every `.html` file in invalid positions (inside `<head>`, floating between `<head>` and `<body>`, after `</html>`) — removed everywhere.
+- **Critical fix:** a stray `<a>` tag had been pasted into the middle of `script.js`, which caused a JavaScript syntax error and broke the *entire* app (login, notes, chat, everything) — removed it.
+- Same stray tag was also corrupting `style.css` and littered across every `.html` file in invalid positions (inside `<head>`, floating between `<head>` and `<body>`, after `</html>`) — removed all occurrences.
 - Notice Board is now wired into the sidebar navigation on every page (previously only reachable if you knew the URL) and added as a dashboard card.
 - Rebuilt `notice.html` to use the same sidebar/theme-toggle/typography as the rest of the app — it was previously an unstyled orphan page.
 - Fixed a bug where the "Create Notice" panel never appeared for teachers (`role === "Teacher"` was compared against a stored lowercase `"teacher"`).
@@ -359,3 +370,4 @@ This project is licensed under the **MIT License**.
 - Replaced a blocking `alert()` in the notice flow with the app's existing toast notification for consistency.
 - Removed a stray editor config file (`{} settings.json`) that shouldn't have been committed.
 - Notice cards now use the app's CSS variables so they respect dark mode instead of a hardcoded white background.
+- Added the dashboard Study Buddy chatbot with local study data summaries and saved conversation history.
