@@ -60,13 +60,19 @@
           placeholder="Assignment title (required)"
         >
       </div>
-      <div class="input-row">
+      <div class="input-row" style="margin-bottom:10px">
         <input
           type="text"
           id="assignmentDesc"
           class="input-field"
           placeholder="Description or link (optional)"
         >
+      </div>
+      <div class="assignment-form-row">
+        <div class="deadline-field">
+          <label for="assignmentDeadline">Due date</label>
+          <input type="datetime-local" id="assignmentDeadline" class="input-field">
+        </div>
         <button class="btn btn-primary" onclick="addAssignment()">Add</button>
       </div>
     </div>
